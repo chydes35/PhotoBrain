@@ -19,7 +19,7 @@ The [Editor integration index](integrations/perception-editor.md) records pinned
 - Library: bootstrap / research draft; not an engineering-ready V2 release.
 - V2 blueprint: preserved unchanged with a [provenance hash](blueprints/README.md).
 - V1: not supplied locally; do not reconstruct or claim it is archived.
-- First contribution: [MPKB-02-005](chapters/02-light-color-science/MPKB-02-005.md), bounded to normalized sRGB transfer functions. Other transfer functions remain open.
+- Research contributions: [MPKB-02-005](chapters/02-light-color-science/MPKB-02-005.md) covers normalized sRGB and the Rec.709 source OETF with a deliberately partial inverse. Other transfers and production decoding/display policies remain open.
 - Editor Milestone 0 remains subject to its own acceptance gates.
 - Local Git repository only; no PhotoBrain remote or shared contributor access is configured yet.
 

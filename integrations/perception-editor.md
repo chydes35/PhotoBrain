@@ -16,7 +16,7 @@ This is PhotoBrain's Chapter 17 integration summary, not an authoritative app ro
 
 | PhotoBrain record | Knowledge version | Editor adoption | Gate |
 | --- | --- | --- | --- |
-| MPKB-02-005 | 0.1.0, research-draft | Not implemented or assessed in this task | Independent review of full intended scope plus app-specific audit/ticket before adoption |
+| MPKB-02-005 | 0.2.0, research-draft | Not implemented or assessed in this task | Independent review of full intended scope plus app-specific audit/ticket before adoption; partial Rec.709 inverse is not a video decoder |
 
 For each future adoption record, capture PhotoBrain commit + topic IDs/versions, Editor base/implementation commits, app ticket/ADR link, compatibility implications, tests, rollback and explicit accepted/unverified results. Use the actual immutable commits, not merely “latest PhotoBrain.”
 
