@@ -4,7 +4,7 @@ The integrator serializes this file; contributors request assignment before chan
 
 | ID | Owner/model | Module and scope | State | Record |
 | --- | --- | --- | --- | --- |
-| PB-001 | Codex / model version not exposed | Bootstrap + MPKB-02-005 normalized sRGB slice | integrated locally; topic remains draft | [Contribution](PB-001.md) |
+| PB-001 | Codex / model version not exposed | Bootstrap + MPKB-02-005 normalized sRGB slice | on `main` since bootstrap commit `7e8f304`; topic remains research-draft | [Contribution](PB-001.md) |
 | PB-002 | Codex / model version not exposed | Extend MPKB-02-005 with independently sourced Rec.709 comparison | merged; topic remains research-draft | [Contribution/review](PB-002.md); [PR #2](https://github.com/chydes35/PhotoBrain/pull/2); merge `3be85b0` |
 | PB-003 | Codex / model version not exposed | MPKB-11-001: classify image input representations from payload and metadata | merged; topic remains research-draft | [Contribution](PB-003.md); [PR #6](https://github.com/chydes35/PhotoBrain/pull/6); merge `da5f827` |
 | PB-004 | Codex / model version not exposed | Open-source ecosystem and retrieval research inventory | merged; inventory remains research-draft | [Contribution](PB-004.md); [PR #5](https://github.com/chydes35/PhotoBrain/pull/5); merge `1ff8f50` |
