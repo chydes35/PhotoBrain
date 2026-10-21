@@ -20,6 +20,6 @@ MPKB-02-005 starts with normalized sRGB components and a scalar Python oracle. R
 
 ## PB-ADR-005 — Blueprint authorship and publication
 
-Date: 2026-10-21. Status: [D] owner decision, stated in chat by the repository owner.
+Date: 2026-10-21. Status: adopted; stated in chat by the repository owner.
 
-Collin (GitHub `chydes35`) authored MPKB-BLUEPRINT-2.0 and its V1.0 source (`Master_Photography_Knowledge_Base.md`) with AI assistance and authorizes public publication of the blueprint in this repository. This replaces the earlier "authorship not established / no public redistribution" status. It grants no reuse or redistribution license to third parties and does not select a project-wide license; that remains an owner decision. The preserved blueprint and its provenance hash are unchanged.
+Collin (GitHub `chydes35`) authored MPKB-BLUEPRINT-2.0 and its V1.0 source (`Master_Photography_Knowledge_Base.md`, as named in the blueprint) with AI assistance and authorizes public publication of the blueprint in this repository. This replaces the earlier "authorship not established / no public redistribution" status. It grants no reuse or redistribution license to third parties and does not select a project-wide license; that remains an owner decision. The preserved blueprint and its provenance hash are unchanged. Alternative: make the repository private or remove the blueprint; rejected because the owner authored it and authorizes publication.
