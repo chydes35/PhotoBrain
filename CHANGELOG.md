@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-21 — Blueprint authorship (PB-ADR-005)
+
+- Record owner authorship (with AI assistance) of the V2 blueprint and V1.0 source, and authorization to publish it in this repository. No license granted; blueprint and provenance hash unchanged.
+
 ## 2026-10-21 — PB-002 Rec.709 research
 
 - Extend MPKB-02-005 to 0.2.0 with primary-source Rec.709 encoding, inverse-domain analysis and sRGB numeric comparisons; parent remains research-draft.
