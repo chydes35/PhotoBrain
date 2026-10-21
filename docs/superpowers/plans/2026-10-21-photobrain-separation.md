@@ -43,7 +43,7 @@
 **Interfaces:** Same Editor HEAD, branch, Git status and file-content fingerprint; old paths resolve to new locations.
 
 - [x] Read M0 task status and preserve baseline fingerprints. Do not send messages to other chats without user authorization.
-- [x] Move clean standalone checkout to `/Volumes/ExSSD1/Developer/perception-media-editor-m0`; preserve `.build` without rebuilding. Keep recorded relative evidence paths valid in the original alias layout by moving M0 sidecar directories to a separate sibling workspace and adding explicit links.
+- [x] Move clean standalone checkout to `<m0-editor-checkout>/` (placeholder for the machine-local path; PB-009, 2026-10-21); preserve `.build` without rebuilding. Keep recorded relative evidence paths valid in the original alias layout by moving M0 sidecar directories to a separate sibling workspace and adding explicit links.
 - [x] Verify fingerprint, status, references, old aliases and dataset separation. If relocation is blocked, document exact blocker and continue unaffected setup.
 
 ### Task 3: First research contribution

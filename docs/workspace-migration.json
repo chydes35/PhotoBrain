@@ -1,8 +1,8 @@
 {
   "date": "2026-10-21",
   "method": "same-volume directory rename with original-path compatibility symlinks",
-  "editor_canonical": "/Volumes/ExSSD1/Developer/perception-media-editor-m0",
-  "data_workspace": "/Volumes/ExSSD1/Developer/PerceptionEditor-M0-Workspace",
+  "editor_canonical": "<m0-editor-checkout>/",
+  "data_workspace": "<m0-workspace>/",
   "editor_before_after_match": true,
   "snapshot": {
     "head": "593549a4e0461ad548b7f0588c068fb509fda6d4",
