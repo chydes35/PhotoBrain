@@ -21,7 +21,7 @@ The [Editor integration index](integrations/perception-editor.md) records pinned
 - V1: not supplied locally; do not reconstruct or claim it is archived.
 - Research contributions: [MPKB-02-005](chapters/02-light-color-science/MPKB-02-005.md) covers normalized sRGB and the Rec.709 source OETF with a deliberately partial inverse. Other transfers and production decoding/display policies remain open.
 - Editor Milestone 0 remains subject to its own acceptance gates.
-- Local Git repository only; no PhotoBrain remote or shared contributor access is configured yet.
+- Configured Git origin: [chydes35/PhotoBrain](https://github.com/chydes35/PhotoBrain). Remote access and sharing permissions were not tested by PB-002; its commits were integrated locally without a push.
 
 ## Working with multiple models
 

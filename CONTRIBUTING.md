@@ -6,7 +6,7 @@ The task board allocates a stable task/module ID, owner/model, base commit, bran
 
 Use a separate clone/worktree and a branch such as `research/<task-id>-<model>`. Only one worker edits any checkout. Prefer the app's managed worktree mechanism when available. For another model that cannot access Git, supply the topic template, pinned prerequisites and sources; collect its patch or draft as a distinct contribution for an integrator to import. Do not give multiple models a single mutable canonical document/database.
 
-The initial bootstrap is created in the empty PhotoBrain repository; subsequent contributors use isolated branches. Native worktree creation must use the PhotoBrain repository, never the Editor repo. No remote is configured yet: cross-machine collaboration needs a user-approved private remote or explicit patch exchange.
+The initial bootstrap was created in the empty PhotoBrain repository; subsequent contributors use isolated branches. Native worktree creation must use the PhotoBrain repository, never the Editor repo. Cross-machine contributors may use the configured origin only with authorized access, or exchange explicit patches. A configured URL does not establish available credentials or sharing permissions; remote setup and publication remain owner-authorized actions.
 
 ## Author a contribution
 
