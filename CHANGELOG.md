@@ -7,6 +7,8 @@
 - Mark PB-002 merged via PR #2.
 - Grade `CLM-PB005-05` and `CLM-PB005-06` B, not A: the full H.264 V15 text was not retrieved.
 - `MPKB-11-001`: add ProRAW companded storage, `DNGVersion`, CFA tag requirements and mask/depth `NewSubFileType` roles (`CLM-PB003-09`–`12`, DNG 1.7.1.0 re-read); split one summary label; clarify the RGB contrast for conventional video. Topic remains `research-draft`.
+- Update stale integration states (`ee9b41c`): PB-001 on `main` since bootstrap `7e8f304`; PB-002 merged via PR #2 (`3be85b0`); PB-005 prerequisite records PB-003 merged via PR #6 (`da5f827`).
+- Apply PR #8 review nits: restore `CLM-PB005-05` and `CLM-PB005-06` to A after consulting the full H.264 V15 (08/2024) text (Table 6-1 p. 23; §7.4.2.1.1 pp. 77–78; E.2.1 pp. 431–436); record both DNG 1.7.1.0 PDF copies and WWDC21 10160 timestamps; cite the ProRes RAW white paper (p. 4) for the per-pixel RGB meaning; note that Apple does not name the semantic-mask tag; complete PB-003/PB-004/PB-005 records.
 
 ## 2026-10-21 — PB-004 open-source ecosystem research
 
