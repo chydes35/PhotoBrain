@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-21 — PB-003 assigned
+
+- Claim MPKB-11-001 input representation research on `research/PB-003-codex` from base `7098ed3`.
+- Scope the contribution to source-backed representation classes and metadata evidence; no local media, Editor code, or application behavior changes.
+
 ## 2026-10-21 — PB-002 Rec.709 research
 
 - Extend MPKB-02-005 to 0.2.0 with primary-source Rec.709 encoding, inverse-domain analysis and sRGB numeric comparisons; parent remains research-draft.
