@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Rebuild/run PB-006's keyword baseline from a pinned Git commit."""
+"""Run PB-006 retrieval methods against the same pinned Git corpus."""
 from __future__ import annotations
 
 import argparse
 import json
+import math
+import os
 import re
 import sqlite3
 import subprocess
 import time
+import urllib.request
 from pathlib import Path
 
 BASE = "6a7f30e21a10618601e4f987e3759b714e08baf5"
@@ -75,6 +78,58 @@ def run_keyword(documents: list[dict[str, str]], queries: list[dict], top_k: int
     return rows
 
 
+def ollama_post(base_url: str, endpoint: str, payload: dict) -> dict:
+    request = urllib.request.Request(
+        f"{base_url.rstrip('/')}{endpoint}",
+        data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(request, timeout=300) as response:
+        return json.load(response)
+
+
+def ollama_get(base_url: str, endpoint: str) -> dict:
+    with urllib.request.urlopen(f"{base_url.rstrip('/')}{endpoint}", timeout=60) as response:
+        return json.load(response)
+
+
+def run_embedding(documents: list[dict[str, str]], queries: list[dict], model: str, base_url: str, top_k: int = 5) -> tuple[dict, dict]:
+    document_vectors = []
+    started = time.perf_counter()
+    for doc in documents:
+        text = f"search_document: {doc['title']}\n{doc['body']}"
+        response = ollama_post(base_url, "/api/embed", {"model": model, "input": text})
+        document_vectors.append(response["embeddings"][0])
+    document_encoding_ms = (time.perf_counter() - started) * 1000
+
+    rows = {}
+    for query in queries:
+        started = time.perf_counter()
+        response = ollama_post(base_url, "/api/embed", {"model": model, "input": f"search_query: {query['query']}"})
+        query_vector = response["embeddings"][0]
+        query_norm = math.sqrt(sum(value * value for value in query_vector))
+        scored = []
+        for doc, vector in zip(documents, document_vectors):
+            doc_norm = math.sqrt(sum(value * value for value in vector))
+            similarity = sum(a * b for a, b in zip(query_vector, vector)) / (query_norm * doc_norm)
+            scored.append((doc["id"], similarity))
+        scored.sort(key=lambda item: item[1], reverse=True)
+        elapsed_ms = (time.perf_counter() - started) * 1000
+        rows[query["id"]] = {"hits": [{"id": doc_id, "score": score} for doc_id, score in scored[:top_k]], "latency_ms": elapsed_ms}
+
+    details = ollama_post(base_url, "/api/show", {"name": model})
+    tags = ollama_get(base_url, "/api/tags")
+    model_row = next((item for item in tags.get("models", []) if item.get("name") == model), {})
+    return rows, {
+        "model": model,
+        "digest": model_row.get("digest", "not exposed"),
+        "model_info": details.get("model_info", {}),
+        "document_encoding_total_ms": document_encoding_ms,
+        "document_encoding_mean_ms": document_encoding_ms / len(documents),
+    }
+
+
 def metrics(queries: list[dict], results: dict) -> dict:
     recalls, reciprocal_ranks = [], []
     expected_ids_total = expected_ids_found = 0
@@ -102,13 +157,24 @@ def metrics(queries: list[dict], results: dict) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output", type=Path, default=HERE / "keyword-results.json")
+    parser.add_argument("--method", choices=("keyword", "embedding"), default="keyword")
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--model", default="nomic-embed-text:v1.5")
+    parser.add_argument("--ollama-url", default=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     args = parser.parse_args()
+    ollama_url = args.ollama_url if "://" in args.ollama_url else f"http://{args.ollama_url}"
+    output = args.output or HERE / ("keyword-results.json" if args.method == "keyword" else "embedding-results.json")
     queries = json.loads((HERE / "queries.json").read_text())
     documents = load_chunks()
-    results = run_keyword(documents, queries)
+    model_details = None
+    if args.method == "keyword":
+        results = run_keyword(documents, queries)
+        method = "SQLite FTS5 BM25"
+    else:
+        results, model_details = run_embedding(documents, queries, args.model, ollama_url)
+        method = "Nomic Embed Text v1.5 cosine similarity via local Ollama"
     report = {
-        "method": "SQLite FTS5 BM25",
+        "method": method,
         "corpus_commit": BASE,
         "sqlite_version": sqlite3.sqlite_version,
         "document_count": len(documents),
@@ -117,8 +183,14 @@ def main() -> None:
         "metrics": metrics(queries, results),
         "queries": results,
     }
-    args.output.write_text(json.dumps(report, indent=2) + "\n")
-    print(json.dumps({k: report[k] for k in ("method", "corpus_commit", "document_count", "query_count", "metrics")}, indent=2))
+    if model_details:
+        report["model_details"] = model_details
+        report["ollama_url"] = ollama_url
+    output.write_text(json.dumps(report, indent=2) + "\n")
+    summary = {k: report[k] for k in ("method", "corpus_commit", "document_count", "query_count", "metrics")}
+    if model_details:
+        summary["model_details"] = model_details
+    print(json.dumps(summary, indent=2))
 
 
 if __name__ == "__main__":

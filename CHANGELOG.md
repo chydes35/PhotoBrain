@@ -3,12 +3,11 @@
 ## 2026-10-21 — PB-006 assigned
 
 - Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
-- Limit the work to local tools and tracked knowledge files; no packages, models, datasets, private data or app behavior changes.
+- Initial scope used installed local tools and tracked knowledge files only; the user later authorized the benchmark model download to the external SSD. No datasets, private data, or app behavior changes.
 
-## 2026-10-21 — PB-006 keyword baseline
+## 2026-10-21 — PB-006 retrieval comparison
 
-- Add a pinned-commit retrieval runner, 12 hand-labeled queries and a SQLite FTS5 BM25 baseline over 52 Markdown heading chunks.
-- After independent review broadened answer-bearing relevance labels and clarified query scope, record Recall@5 0.826, MRR@5 0.628 and expected claim-ID coverage 13/22. The embedding comparison remains incomplete because the available local model endpoint does not provide embeddings; no model or package was downloaded.
+- Record the pinned-corpus SQLite FTS5 baseline and Nomic Embed Text v1.5 cosine comparison over 52 chunks and 12 queries; keyword Recall@5/MRR@5 0.826/0.628 versus embedding 0.708/0.597. Embedding expected claim-ID presence was 16/22 versus keyword's 13/22, at higher one-run latency. The Apache-2.0 model was stored on the external SSD; no model data entered Git. No application or database adoption decision follows.
 
 ## 2026-10-21 — Post-merge cleanup
 
