@@ -4,9 +4,11 @@
 
 The task board allocates a stable task/module ID, owner/model, base commit, branch, owned files, prerequisites and reviewer. Assignment is a coordination record, not a filesystem lock. One integrator serializes assignments; contributors must not both claim the same files. If a topic overlaps, split the question or queue the work.
 
-Use a separate clone/worktree and a branch such as `research/<task-id>-<model>`. Only one worker edits any checkout. Prefer the app's managed worktree mechanism when available. For another model that cannot access Git, supply the topic template, pinned prerequisites and sources; collect its patch or draft as a distinct contribution for an integrator to import. Do not give multiple models a single mutable canonical document/database.
+Use a separate clone/worktree and a branch such as `research/<task-id>-<model>`. Only one worker edits any checkout. The canonical remote is the private GitHub repository [`chydes35/PhotoBrain`](https://github.com/chydes35/PhotoBrain); `main` accepts changes through pull requests. Push only the assigned task branch, then open a PR to `main` with the task ID, base commit, scope, evidence and checks. Never push directly to `main`. The integrator reviews and merges accepted work, integrating shared registries and indexes serially.
 
-The initial bootstrap was created in the empty PhotoBrain repository; subsequent contributors use isolated branches. Native worktree creation must use the PhotoBrain repository, never the Editor repo. Cross-machine contributors may use the configured origin only with authorized access, or exchange explicit patches. A configured URL does not establish available credentials or sharing permissions; remote setup and publication remain owner-authorized actions.
+Each model's execution environment needs its own authorized GitHub access to this private repository. Do not copy passwords, access tokens or private media into prompts or contribution files. If a model's GitHub connector cannot see PhotoBrain, have the repository owner grant that connector access to this repository in GitHub's installation settings; use an already-authorized local Git client or a reviewed patch until then. For a model without Git access, supply the topic template, pinned prerequisites and sources, and collect its patch or draft as a distinct contribution for an integrator to import. Do not give multiple models a single mutable canonical document/database.
+
+Native worktree creation must use the PhotoBrain repository, never the Editor repo, and honor the external-SSD placement rule. A configured URL does not establish that any particular model environment has working credentials. PB-002 itself performed no remote publication.
 
 ## Author a contribution
 
@@ -22,7 +24,7 @@ Use [V]/[I]/[H]/[U]/[D]. Source claims require a source-to-claim map; experiment
 2. Reviewer checks math, cited evidence, units, boundary cases, source/license status, tests, private-data exclusions and ownership. Each reported finding is independently confirmed; rejected findings are retained one per line.
 3. Author addresses confirmed findings and reruns affected checks. A second checker verifies bug fixes using verification-runner. Two consecutive no-progress rounds stop for user input.
 4. Integrator checks the current branch, base drift and changes from other contributors. Resolve substantive disagreements in a decision/review record; do not silently overwrite. Incorporate from the reviewed commit with a local merge/cherry-pick or reviewed patch. Merge shared indexes/registries serially, rerun all reference tests, and inspect staged files before commit.
-5. Record integrated commit, review evidence, source/claim additions, limitations and changelog. Remote publishing/PR merging requires user authorization; local commits do not configure sharing.
+5. Record integrated commit, review evidence, source/claim additions, limitations and changelog. An assigned task authorizes publishing its task branch and opening a PR; the integrator owns merge decisions. Do not publish data or merge unrelated work.
 
 `research-draft` means unresolved coverage or gates. `fact-checked` requires independent claim/math review for the declared scope. `engineering-ready` additionally needs every blueprint §1.4 gate: executable reference/oracle, vectors/tolerances, domain/precision audit, data/license review, resource analysis and traced interface/dependencies. Code tests alone cannot promote a topic. Use `superseded` with a successor link for replaced topics.
 
