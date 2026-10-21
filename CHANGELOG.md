@@ -6,6 +6,7 @@
 - Record project-specific license boundaries, model/data caveats, and evidence limitations; generated retrieval remains subordinate to reviewed Markdown and claim/source records.
 - Recommend a measured keyword-versus-embedding retrieval trial before adopting a database; graph retrieval and large dataset downloads remain deferred pending demonstrated need.
 - No dependencies, code, datasets, application behavior, or private workspace data added.
+- Integrated locally in `3ca97b2`; no remote push or publication.
 
 ## 2026-10-21 — PB-002 Rec.709 research
 
