@@ -21,11 +21,11 @@ The [Editor integration index](integrations/perception-editor.md) records pinned
 - V1: not supplied locally; do not reconstruct or claim it is archived.
 - First contribution: [MPKB-02-005](chapters/02-light-color-science/MPKB-02-005.md), bounded to normalized sRGB transfer functions. Other transfer functions remain open.
 - Editor Milestone 0 remains subject to its own acceptance gates.
-- Local Git repository only; no PhotoBrain remote or shared contributor access is configured yet.
+- Private shared remote: [`chydes35/PhotoBrain`](https://github.com/chydes35/PhotoBrain). The `main` branch requires pull requests; see [shared remote setup](docs/shared-remote.md).
 
 ## Working with multiple models
 
-Assign distinct module IDs in [the task board](tasks/README.md). Each contributor works in its own clone/worktree and branch, cites evidence, and requests an independent review before integration. Shared topic indexes and registries are integrated by one maintainer. Models receiving a document or chat prompt must return contributions to this workflow; they do not write over the canonical library concurrently.
+Assign distinct module IDs in [the task board](tasks/README.md). Each contributor works in its own clone/worktree and branch, cites evidence, and requests an independent review before integration. Shared topic indexes and registries are integrated by one maintainer. Every execution environment needs separately authorized access to the private remote; never share credentials in prompts. Models receiving a document or chat prompt must return contributions to this workflow; they do not write over the canonical library concurrently.
 
 Run the executable reference checks from this directory:
 
