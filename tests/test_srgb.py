@@ -1,30 +1,36 @@
 """Tests catch wrong branches/constants, hidden clipping and invalid propagation.
 
-Literal vectors (PB-009 correction): each expected value is the correctly
-rounded binary64 value of the cited equation evaluated with Decimal at
-precision 60, using the exact binary value of the float input. They were
-generated without calling the implementation, and
-``test_literals_match_independent_decimal`` re-derives every literal the same
-way so the provenance is checked on each run. PB-001's original literals for
-decode(0.5), decode(128/255), decode(0.0404499), decode(0.0404501),
-encode(0.001) and encode(0.00313081) were 1-4 ulp away from the correctly
-rounded values; they were replaced, not loosened.
+Expected values (PB-009 convention, shared with tests/test_rec709.py): each
+literal is the correctly rounded binary64 value of the cited equation
+evaluated with Decimal at precision 60 from the exact binary value of the
+float input. Branch thresholds compare exact binary values of the input and
+of the threshold constant, as the float code does. Literals were generated
+without calling the implementation, and
+``test_literals_match_independent_decimal`` re-derives every one on each run.
+PB-001's original literals for decode(0.5), decode(128/255), decode(0.0404499),
+decode(0.0404501), encode(0.001) and encode(0.00313081) were 1-4 ulp from the
+correctly rounded values; they were replaced, not loosened.
 
-Tolerance: the float implementation may differ from the correctly rounded
-value by a few units in the last place (ulp), mainly because the 2.4 and
-1/2.4 exponents amplify the rounding of the power base. A 300 001-point
-sample on Python 3.14/macOS arm64 measured at most 5 ulp (encode) and 7 ulp
-(decode). Vector assertions allow ``VECTOR_ULPS = 16`` ulp of the expected
-value, a margin for other libm ``pow`` implementations; zero is exact.
+Tolerance: the implementation differs from the correctly rounded value by a
+few ulp, mainly because the 2.4 and 1/2.4 exponents amplify the rounding of
+the power base. Vector and grid assertions allow the largest error measured
+against the same Decimal reference over a 300 001-input sample (Python
+3.14.7, macOS arm64): ENCODE_ULPS = 5, DECODE_ULPS = 7. Blind spot: errors
+up to the bound are accepted by design, so a perturbation smaller than
+(bound - that vector's own error) passes the vector and grid tests; the
+literal re-derivation test is the guard for the literals themselves. Another
+libm may need the bounds re-measured. Zero is compared exactly.
 """
 
 import math
 import unittest
 from decimal import Decimal, localcontext
+from fractions import Fraction
 
 from experiments.srgb.reference import decode_srgb, encode_srgb
 
-VECTOR_ULPS = 16
+ENCODE_ULPS = 5
+DECODE_ULPS = 7
 
 ENCODE_VECTORS = [(0.0, 0.0), (0.001, 0.012920000000000001),
                   (0.0031308, 0.040449936),
@@ -45,20 +51,20 @@ KNEE = 0.0031308
 
 def _decimal_encode(value):
     x = Decimal(value)
-    if x <= Decimal('0.0031308'):
+    if x <= Decimal(0.0031308):
         return Decimal('12.92') * x
     return Decimal('1.055') * x ** (Decimal(1) / Decimal('2.4')) - Decimal('0.055')
 
 
 def _decimal_decode(value):
     x = Decimal(value)
-    if x <= Decimal('0.04045'):
+    if x <= Decimal(0.04045):
         return x / Decimal('12.92')
     return ((x + Decimal('0.055')) / Decimal('1.055')) ** Decimal('2.4')
 
 
 class SRGBReferenceTests(unittest.TestCase):
-    def assertWithinUlps(self, actual, expected, ulps=VECTOR_ULPS):
+    def assertWithinUlps(self, actual, expected, ulps):
         if expected == 0.0:
             self.assertEqual(actual, 0.0)
             return
@@ -80,12 +86,35 @@ class SRGBReferenceTests(unittest.TestCase):
     def test_encode_known_vectors(self):
         for value, expected in ENCODE_VECTORS:
             with self.subTest(value=value):
-                self.assertWithinUlps(encode_srgb(value), expected)
+                self.assertWithinUlps(encode_srgb(value), expected, ENCODE_ULPS)
 
     def test_decode_known_vectors(self):
         for value, expected in DECODE_VECTORS:
             with self.subTest(value=value):
-                self.assertWithinUlps(decode_srgb(value), expected)
+                self.assertWithinUlps(decode_srgb(value), expected, DECODE_ULPS)
+
+    def test_implementation_within_measured_ulps_on_grid(self):
+        with localcontext() as context:
+            context.prec = 60
+            for i in range(1001):
+                value = i / 1000
+                with self.subTest(value=value):
+                    self.assertWithinUlps(encode_srgb(value),
+                                          float(_decimal_encode(value)), ENCODE_ULPS)
+                    self.assertWithinUlps(decode_srgb(value),
+                                          float(_decimal_decode(value)), DECODE_ULPS)
+
+    def test_accepts_other_real_numbers_via_float(self):
+        class Shifted(float):
+            def __float__(self):
+                return 0.5
+
+        for function in (encode_srgb, decode_srgb):
+            with self.subTest(function=function.__name__):
+                self.assertEqual(function(Fraction(1, 2)), function(0.5))
+                self.assertEqual(function(Fraction(1, 3)), function(1 / 3))
+                # A float subclass is evaluated at its __float__ value.
+                self.assertEqual(function(Shifted(0.25)), function(0.5))
 
     def test_endpoints_are_exact(self):
         # encode(1.0) previously returned 1 - 2**-53, so floor(x * 255) was 254.
@@ -111,7 +140,8 @@ class SRGBReferenceTests(unittest.TestCase):
     def test_reject_out_of_domain_instead_of_clipping(self):
         for function in (encode_srgb, decode_srgb):
             for value in (-0.001, 1.001, math.nan, math.inf, -math.inf,
-                          -1, 2, 10 ** 400):
+                          -1, 2, 10 ** 400, Fraction(3, 2),
+                          Fraction(10 ** 400, 3)):
                 with self.subTest(function=function.__name__, value=value):
                     with self.assertRaises(ValueError):
                         function(value)

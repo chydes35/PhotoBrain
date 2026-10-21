@@ -6,7 +6,7 @@ Purpose: support [MPKB-02-005](../../chapters/02-light-color-science/MPKB-02-005
 
 - `encode_bt709_oetf(value)`: finite normalized linear source scalar in [0,1] to normalized signal.
 - `invert_bt709_oetf(value)`: finite normalized signal in the rounded OETF's reachable range to a linear scalar; rejects its knee gap.
-- Both return floating point without quantization. Non-finite, out-of-range or gap inputs raise `ValueError`; `bool`, `Decimal`, strings and other non-`int`/`float` types raise `TypeError` (PB-009). `-0.0` is treated as `0.0`.
+- Both return floating point without quantization. Inputs follow the same boundary as the sRGB oracle (PB-009): any `numbers.Real` except `bool`, converted once with `float()` (float subclasses at their `__float__` value); non-finite, overflowing, out-of-range or gap inputs raise `ValueError`; `bool`, `Decimal`, strings, `complex` and other types raise `TypeError`. `-0.0` is treated as `0.0`.
 - Rounded constants and strict source knee are preserved. Floating-point comparisons use the computed upper-knee value (about 0.08124794403514046); equality/round trips are tolerance-based, not bitwise claims.
 - After selecting a valid signal branch, the inverse result is bounded to that branch's linear domain: below 0.018 for the lower branch and at least 0.018 for the upper. This prevents floating rounding from crossing the discontinuity during re-encoding; it does not clip inputs or fill the signal gap.
 
@@ -30,13 +30,15 @@ Literal expected values were evaluated with Decimal precision 60, separately fro
 from decimal import Decimal as D, localcontext
 with localcontext() as context:
     context.prec = 60
-    print(D('1.099') * D('0.18') ** D('0.45') - D('0.099'))
-    print(((D('0.5') + D('0.099')) / D('1.099')) ** (D(1) / D('0.45')))
-# 0.409007728864150443679185925657117989803667082007413982025271
+    print(D('1.099') * D(0.18) ** D('0.45') - D('0.099'))
+    print(((D(0.5) + D('0.099')) / D('1.099')) ** (D(1) / D('0.45')))
+# 0.409007728864150435219157766569414727841193937546237742953658
 # 0.259589400506285739878006128805123982781373384468868543934369
 ```
 
 The neighboring vectors at linear 0.0179999 / 0.018 / 0.0180001 are 0.08099955 / 0.08124794403514047768… / 0.08124839465431212050…. Decimal inverse at encoded 0.081248 is 0.01800001241953031771…. A transcription of that last expected value was corrected against the independent calculation before implementation; no implementation result was used to set it.
+
+PB-009 note (2026-10-21): the PB-002 values above used exact decimal inputs such as `D('0.18')`. The tests now use the exact binary value of each float input (`D(0.18)`), with branch thresholds compared as binary values (`Decimal(0.018)` is slightly below 0.018, so float 0.018 stays on the upper branch as in the code), and shared with the sRGB tests. Under that convention the knee neighbors are `0.08099955` / `0.08124794403514048` / `0.08124839465431213` and the inverse at 0.081248 is `0.01800001241953032` (binary64). Two PB-002 literals were 1 ulp off and were corrected: encode(0.001) = `0.0045000000000000005` (was `0.0045`) and encode(0.0180001) = `0.08124839465431213` (was `...212`); the other 14 were already correctly rounded. Vector and grid assertions now allow the measured maximum implementation error (3 ulp encode, 5 ulp inverse over a 300 001-input sample, Python 3.14.7 macOS arm64) instead of absolute `1e-14`; `test_literals_match_independent_decimal` re-derives every literal.
 
 Tests catch: wrong curve or constants; inclusive lower knee; silently filled inverse gap; missing finite/range validation; wrong inverse exponent; and substitution of sRGB for Rec.709. Round trips cover generated reachable outputs only. They do not demonstrate behavior over every quantized video level or a full source-to-display chain.
 
