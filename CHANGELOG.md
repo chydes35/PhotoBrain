@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-21 — PB-008 H.264 V16 author review
+
+- Added ITU's V16 summary evidence for its new SEI interfaces, and full normative evidence confirming the sample-array, bit-depth and VUI defaults stated in the chapter.
+- Confirmed V15 and V16 agree on the scoped sample organization and VUI facts; kept camera-pipeline and stream-specific inferences separate.
+- Integration review corrected the separation between eleven new SEI messages and separate VSEI extensions, and changed the full-text source link to the direct official PDF. A separate verification agent reproduced and checked both fixes; 19 repository reference tests and `git diff --check` passed. No code, sample files, local media or standard text were added.
+
+## 2026-10-21 — PB-008 assigned
+
+- Assign review of current ITU-T H.264 V16 clauses against the existing H.264 V15-based representation claims in `MPKB-11-001` to `research/PB-008-codex` from base `6a7f30e`.
+- Scope is standard-backed technical differences and claim updates only; no local media, decoder, dataset, or application behavior changes.
+
 ## 2026-10-21 — PB-006 assigned
 
 - Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
@@ -8,7 +19,7 @@
 ## 2026-10-21 — PB-006 retrieval comparison
 
 - Record the pinned-corpus SQLite FTS5 baseline and Nomic Embed Text v1.5 cosine comparison over 52 chunks and 12 queries; keyword Recall@5/MRR@5 0.826/0.628 versus embedding 0.708/0.597. Embedding expected claim-ID presence was 16/22 versus keyword's 13/22, at higher one-run latency. The Apache-2.0 model was stored on the external SSD; no model data entered Git. No application or database adoption decision follows.
-- Publish the reviewed contribution as [PR #9](https://github.com/chydes35/PhotoBrain/pull/9); awaiting integrator review.
+- PB-006 is merged via PR #9 at `a0034d4`; no adoption decision follows from the benchmark.
 
 ## 2026-10-21 — Post-merge cleanup
 
