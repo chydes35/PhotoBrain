@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-21 — PB-004 open-source ecosystem research
+
+- Add a source-linked inventory of knowledge retrieval, image/video research tools, neural imaging projects, and photography datasets.
+- Record project-specific license boundaries, model/data caveats, and evidence limitations; generated retrieval remains subordinate to reviewed Markdown and claim/source records.
+- Recommend a measured keyword-versus-embedding retrieval trial before adopting a database; graph retrieval and large dataset downloads remain deferred pending demonstrated need.
+- No dependencies, code, datasets, application behavior, or private workspace data added.
+- Integrated locally in `3ca97b2`; no remote push or publication.
+
 ## 2026-10-21 — PB-005 research draft
 
 - Extended `MPKB-11-001` with source-backed JFIF, PNG and H.264 coding examples; kept file/container layers, source-image fidelity and camera processing history distinct.
