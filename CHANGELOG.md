@@ -20,6 +20,12 @@
 
 - Record the pinned-corpus SQLite FTS5 baseline and Nomic Embed Text v1.5 cosine comparison over 52 chunks and 12 queries; keyword Recall@5/MRR@5 0.826/0.628 versus embedding 0.708/0.597. Embedding expected claim-ID presence was 16/22 versus keyword's 13/22, at higher one-run latency. The Apache-2.0 model was stored on the external SSD; no model data entered Git. No application or database adoption decision follows.
 - PB-006 is merged via PR #9 at `a0034d4`; no adoption decision follows from the benchmark.
+## 2026-10-21 — PB-009 post-merge review fixes
+
+- Corrected the sRGB/Rec.709 references and tests: six sRGB literals now match correctly rounded Decimal results; bounds use measured maxima (sRGB 5/7 ulp; Rec.709 3/5 ulp) with Decimal-grid checks; fixed the sRGB endpoint and input validation; documented the `numbers.Real` boundary and the encode-knee step.
+- Corrected the JFIF APP0 and H.264 V15 claim mappings, regraded the sRGB claims to [I]/D, and recorded limits on upstream camera-processing inference.
+- Replaced user-specific local paths with placeholders in public docs. No private media or standard text was added.
+- Final review of the PB-009 change at `b1e32a4` found no confirmed content issues. A verification-runner independently reproduced the sRGB endpoint failure on the base, confirmed it passed with the fix, and made it fail again in an isolated SSD clone when the fix was temporarily removed. The 32-test suite passed.
 
 ## 2026-10-21 — Post-merge cleanup
 
