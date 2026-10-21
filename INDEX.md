@@ -4,7 +4,7 @@ Status records describe work actually present, not chapter completion. The [blue
 
 | Topic ID | Question | Status | Record |
 | --- | --- | --- | --- |
-| MPKB-02-005 | How do normalized linear and encoded sRGB components relate? | research-draft; first slice only | [Transfer functions](chapters/02-light-color-science/MPKB-02-005.md) |
+| MPKB-02-005 | How do normalized sRGB and Rec.709 source transfers differ? | 0.2.0 research-draft; two bounded slices | [Transfer functions](chapters/02-light-color-science/MPKB-02-005.md) |
 
 ## Planned coverage
 
