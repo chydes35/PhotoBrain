@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-21 — PB-008 H.264 V16 author review
+
+- Added ITU's V16 summary evidence for its new SEI interfaces, and full normative evidence confirming the sample-array, bit-depth and VUI defaults stated in the chapter.
+- Confirmed V15 and V16 agree on the scoped sample organization and VUI facts; kept camera-pipeline and stream-specific inferences separate.
+- Integration review corrected the separation between eleven new SEI messages and separate VSEI extensions, and changed the full-text source link to the direct official PDF. A separate verification agent reproduced and checked both fixes; 19 repository reference tests and `git diff --check` passed. No code, sample files, local media or standard text were added.
+
+## 2026-10-21 — PB-008 assigned
+
+- Assign review of current ITU-T H.264 V16 clauses against the existing H.264 V15-based representation claims in `MPKB-11-001` to `research/PB-008-codex` from base `6a7f30e`.
+- Scope is standard-backed technical differences and claim updates only; no local media, decoder, dataset, or application behavior changes.
+
 ## 2026-10-21 — Post-merge cleanup
 
 - Add `MPKB-11-001` (0.2.1) to the index and search hint.
