@@ -6,7 +6,7 @@ Purpose: support [MPKB-02-005](../../chapters/02-light-color-science/MPKB-02-005
 
 - `encode_bt709_oetf(value)`: finite normalized linear source scalar in [0,1] to normalized signal.
 - `invert_bt709_oetf(value)`: finite normalized signal in the rounded OETF's reachable range to a linear scalar; rejects its knee gap.
-- Both return floating point without quantization. Invalid numeric inputs raise `ValueError`; nonnumeric types are outside the interface.
+- Both return floating point without quantization. Non-finite, out-of-range or gap inputs raise `ValueError`; `bool`, `Decimal`, strings and other non-`int`/`float` types raise `TypeError` (PB-009). `-0.0` is treated as `0.0`.
 - Rounded constants and strict source knee are preserved. Floating-point comparisons use the computed upper-knee value (about 0.08124794403514046); equality/round trips are tolerance-based, not bitwise claims.
 - After selecting a valid signal branch, the inverse result is bounded to that branch's linear domain: below 0.018 for the lower branch and at least 0.018 for the upper. This prevents floating rounding from crossing the discontinuity during re-encoding; it does not clip inputs or fill the signal gap.
 
