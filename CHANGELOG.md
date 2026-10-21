@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-21 — PB-005 assigned
+
+- Assign JPEG, PNG and AVC/H.264 representation research to `research/PB-005-codex` from base `acbdf2c`.
+- Scope to official format evidence and distinguish coded representation from container, metadata and capture history; no private samples, decoder, or app behavior changes.
+
 ## 2026-10-21 — PB-003 research draft
 
 - Added `MPKB-11-001`, a bounded, evidence-backed taxonomy for classifying image resources and video tracks without relying on filename extensions alone.
