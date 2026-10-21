@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-21 — PB-003 research draft
+
+- Added `MPKB-11-001`, a bounded, evidence-backed taxonomy for classifying image resources and video tracks without relying on filename extensions alone.
+- Registered six official Adobe/Apple sources and eight task-prefixed claims. The draft leaves Panasonic LUMIX mode behavior and broader codec coverage explicitly unknown; it includes no app recommendation, code, samples, or copied source text.
+- Validation: Adobe DNG facts and Apple ProRAW/ProRes RAW claims independently checked against official sources. Review corrected DNG headings/page citations and clarified the confidence threshold for validated payload properties. `git diff --check` passed after those corrections. Status remains `research-draft` because format coverage, samples and implementation gates are open.
+
 ## 2026-10-21 — PB-003 assigned
 
 - Claim MPKB-11-001 input representation research on `research/PB-003-codex` from base `7098ed3`.
