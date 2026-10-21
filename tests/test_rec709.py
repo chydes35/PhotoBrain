@@ -56,6 +56,24 @@ class BT709ReferenceTests(unittest.TestCase):
         for value in [i / 10000 for i in range(10001)] + [0.018, 0.0179999, 0.0180001]:
             self.assertAlmostEqual(invert_bt709_oetf(encode_bt709_oetf(value)), value, delta=1e-14)
 
+    def test_inverse_preserves_upper_branch_at_the_signal_knee(self):
+        # Floating inverse can undershoot .018 by one ulp, causing re-encoding
+        # to cross the forward discontinuity. Preserve the selected domain.
+        signals = [encode_bt709_oetf(0.018),
+                   encode_bt709_oetf(math.nextafter(0.018, 1.0)),
+                   0.081248, 0.5, 1.0]
+        for signal in signals:
+            with self.subTest(signal=signal):
+                linear = invert_bt709_oetf(signal)
+                self.assertGreaterEqual(linear, 0.018)
+                self.assertAlmostEqual(encode_bt709_oetf(linear), signal, delta=1e-14)
+
+    def test_inverse_preserves_lower_branch_below_the_signal_gap(self):
+        signal = math.nextafter(0.081, 0.0)
+        linear = invert_bt709_oetf(signal)
+        self.assertLess(linear, 0.018)
+        self.assertAlmostEqual(encode_bt709_oetf(linear), signal, delta=1e-14)
+
     def test_oetf_monotonic_grid_and_jump(self):
         values = [encode_bt709_oetf(i / 10000) for i in range(10001)]
         self.assertTrue(all(a <= b for a, b in zip(values, values[1:])))

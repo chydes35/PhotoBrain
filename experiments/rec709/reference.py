@@ -31,7 +31,9 @@ def invert_bt709_oetf(value: float) -> float:
     """
     _check_normalized(value)
     if value < 0.081:
-        return value / 4.5
+        # Division may round the final lower-branch value up to .018.
+        return min(value / 4.5, math.nextafter(0.018, 0.0))
     if value < _UPPER_KNEE_SIGNAL:
         raise ValueError('signal is in the rounded BT.709 OETF knee gap')
-    return ((value + 0.099) / 1.099) ** (1.0 / 0.45)
+    # Inverse power may round the first upper-branch value below .018.
+    return max(0.018, ((value + 0.099) / 1.099) ** (1.0 / 0.45))

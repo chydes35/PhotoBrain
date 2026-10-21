@@ -8,6 +8,7 @@ Purpose: support [MPKB-02-005](../../chapters/02-light-color-science/MPKB-02-005
 - `invert_bt709_oetf(value)`: finite normalized signal in the rounded OETF's reachable range to a linear scalar; rejects its knee gap.
 - Both return floating point without quantization. Invalid numeric inputs raise `ValueError`; nonnumeric types are outside the interface.
 - Rounded constants and strict source knee are preserved. Floating-point comparisons use the computed upper-knee value (about 0.08124794403514046); equality/round trips are tolerance-based, not bitwise claims.
+- After selecting a valid signal branch, the inverse result is bounded to that branch's linear domain: below 0.018 for the lower branch and at least 0.018 for the upper. This prevents floating rounding from crossing the discontinuity during re-encoding; it does not clip inputs or fill the signal gap.
 
 The mathematical signal gap is `[0.081, 1.099*0.018^0.45-0.099)`. Gap rejection is **PhotoBrain policy**, not an ITU decoder rule. A legal 10-bit code can normalize into this interval: `(135-64)/876 ≈ 0.0810502283`. A general decoder therefore needs an explicit interpolation/approximation/other inverse policy after range handling; this partial inverse must not be substituted for it.
 
@@ -41,6 +42,6 @@ Tests catch: wrong curve or constants; inclusive lower knee; silently filled inv
 
 ## Observations and limits
 
-Baseline: 8 PB-001 tests passed. First PB-002 run: new test import failed because `experiments.rec709` did not exist; original 8 still passed. After implementation: 17 tests passed, 0 skipped. See [contribution/review](../../tasks/PB-002.md) for final verification and source review.
+Baseline: 8 PB-001 tests passed. First PB-002 run: new test import failed because `experiments.rec709` did not exist; original 8 still passed. Initial implementation passed 17 tests. Further boundary review found that inverse rounding could cross the join: the first upper signal inverted just below 0.018, and the final lower signal inverted to 0.018. Re-encoding then differed by approximately 0.000247944. Two regression tests reproduced this before the domain-preserving inverse correction. The corrected full suite executes 19 tests, 0 skipped. See [contribution/review](../../tasks/PB-002.md) for independent causal verification and review.
 
 No speed, image quality, GPU error, file-tag correctness, original S5 mode behavior or production IEC/ITU implementation conformance was measured. This experiment supplies mathematical research evidence, not a shipping recommendation.
