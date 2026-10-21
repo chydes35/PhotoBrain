@@ -18,8 +18,10 @@ against the same Decimal reference over a 300 001-input sample (Python
 3.14.7, macOS arm64): ENCODE_ULPS = 5, DECODE_ULPS = 7. Blind spot: errors
 up to the bound are accepted by design, so a perturbation smaller than
 (bound - that vector's own error) passes the vector and grid tests; the
-literal re-derivation test is the guard for the literals themselves. Another
-libm may need the bounds re-measured. Zero is compared exactly.
+literal re-derivation test is the guard for the literals themselves.
+These bounds have zero headroom over the maxima measured on this platform's
+libm, so a different libm could exceed them; re-measure before loosening.
+Another libm may need the bounds re-measured. Zero is compared exactly.
 """
 
 import math

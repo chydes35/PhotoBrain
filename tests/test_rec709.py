@@ -19,8 +19,10 @@ showed against the same Decimal reference over a 300 001-input sample
 measured on the 299 919 reachable inputs). Errors up to the bound are accepted
 by design, so a perturbation smaller than (bound - the vector's own error) is
 not caught by the vector tests; the literal re-derivation test guards the
-literals themselves. Another libm may need the bound re-measured. PB-002 left
-sRGB unchanged; PB-009 later added input-type and negative-zero checks.
+literals themselves. Another libm may need the bound re-measured.
+These bounds have zero headroom over the maxima measured on this platform's
+libm, so a different libm could exceed them; re-measure before loosening.
+PB-002 left sRGB unchanged; PB-009 later added input-type and negative-zero checks.
 """
 
 import math
