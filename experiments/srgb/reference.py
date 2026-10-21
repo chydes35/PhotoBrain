@@ -5,7 +5,7 @@ Color 4, 2026-10-20, section 10.2). Independently written, not copied code.
 
 Input contract (PB-009): a component must be a ``numbers.Real`` other than
 ``bool`` (``int``, ``float``, ``fractions.Fraction``, and types registered as
-Real such as NumPy floating scalars). It is converted once with ``float()``,
+Real; NumPy registers its floating scalars, not tested here). It is converted once with ``float()``,
 so the result is computed from that binary64 value; a float subclass or other
 Real type is evaluated at its ``__float__`` value. ``bool``, ``Decimal`` (not
 registered as Real), ``str``, ``complex`` and other types raise ``TypeError``.

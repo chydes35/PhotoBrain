@@ -2,10 +2,10 @@
 
 ## 2026-10-21 — PB-009 post-merge review fixes
 
-- Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`) in `tasks/PB-009.md`.
-- sRGB oracle and tests: six literals corrected to correctly rounded Decimal values (e.g. `decode(0.5)` = `0.21404114048223244`) and re-derived in a test; documented 16-ulp vector tolerance; explicit test of the `-2.85e-8` encode step at `0.0031308`; `encode_srgb(1.0)` now exactly `1.0`. Both reference modules raise `TypeError` for `bool`/`Decimal`/other types and `ValueError` for bad numbers, and map `-0.0` to `0.0`. 27 tests pass on Python 3.14.7 and 3.9.6.
+- Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`); final re-review pending.
+- sRGB oracle and tests: six literals corrected to correctly rounded Decimal values (e.g. `decode(0.5)` = `0.21404114048223244`) and re-derived in a test; documented 16-ulp vector tolerance; explicit test of the `-2.85e-8` encode step at `0.0031308`; `encode_srgb(1.0)` now exactly `1.0`. Both reference modules raise `TypeError` for `bool`/`Decimal`/other types and `ValueError` for bad numbers, and map `-0.0` to `0.0`. After Skeptic's re-review of `0d8b381`: vector tolerances equal the measured maximum implementation error (sRGB 5/7 ulp, Rec.709 3/5 ulp) plus a Decimal grid check; Rec.709 literals use the same exact-binary-input convention (two corrected by 1 ulp); inputs may be any `numbers.Real` except `bool`. 32 tests pass on Python 3.14.7, 3.11.16 and 3.9.6.
 - Registries: `CLM-PB001-01`/`02` relabelled [I] and graded D (secondary summaries; IEC text not obtained); `CLM-PB005-02` APP0 applies to all JFIF; `CLM-PB005-06` cites Annex E.2.1 only. `MPKB-02-005` 0.2.1 and `MPKB-11-001` 0.2.2.
-- Records: dated notes in PB-001 to PB-005 for published branches/PRs and unretained review output; SRC-PB003-01 access note re-tested; absolute local paths replaced with placeholders in two public docs. No CI or GitHub settings changed.
+- Records: dated notes in PB-001 to PB-005 for published branches/PRs and unretained review output; SRC-PB003-01 access note re-tested; absolute local paths replaced with placeholders in four public files (Git history unchanged). No CI or GitHub settings changed.
 
 ## 2026-10-21 — Post-merge cleanup
 

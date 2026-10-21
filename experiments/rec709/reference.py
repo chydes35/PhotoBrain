@@ -5,7 +5,7 @@ reachable range and rejection of the rounded-knee gap are PhotoBrain policy.
 
 Input contract (PB-009): a value must be a ``numbers.Real`` other than
 ``bool`` (``int``, ``float``, ``fractions.Fraction``, and types registered as
-Real such as NumPy floating scalars). It is converted once with ``float()``,
+Real; NumPy registers its floating scalars, not tested here). It is converted once with ``float()``,
 so a float subclass or other Real type is evaluated at its ``__float__``
 value. ``bool``, ``Decimal`` (not registered as Real), ``str``, ``complex``
 and other types raise ``TypeError``. A value that is not finite after
