@@ -1,0 +1,326 @@
+{
+  "method": "SQLite FTS5 BM25",
+  "corpus_commit": "6a7f30e21a10618601e4f987e3759b714e08baf5",
+  "sqlite_version": "3.53.4",
+  "document_count": 52,
+  "corpus_files": [
+    "INDEX.md",
+    "chapters/02-light-color-science/MPKB-02-005.md",
+    "chapters/11-file-formats/MPKB-11-001.md",
+    "references/claims.md",
+    "references/data-licenses.md",
+    "references/ecosystem.md",
+    "references/sources.md"
+  ],
+  "query_count": 12,
+  "metrics": {
+    "recall_at_5": 0.8263888888888888,
+    "mrr_at_5": 0.6277777777777778,
+    "expected_claim_id_coverage_at_5": 0.5909090909090909,
+    "expected_claim_ids_total": 22,
+    "expected_claim_ids_found": 13,
+    "mean_latency_ms": 0.18553483338716129
+  },
+  "queries": {
+    "Q01": {
+      "hits": [
+        {
+          "id": "INDEX.md#Knowledge index",
+          "score": -14.200141416625637
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Summary and question addressed",
+          "score": -12.155410532865787
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Reference algorithm and pseudocode",
+          "score": -9.184583160128495
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#(preamble)",
+          "score": -7.865597441510107
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Definitions, units and prerequisites",
+          "score": -7.0838169038828305
+        }
+      ],
+      "latency_ms": 0.24504197062924504
+    },
+    "Q02": {
+      "hits": [
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Alternative methods and comparative evidence",
+          "score": -8.652337367875798
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Edge cases, failure modes and safeguards",
+          "score": -8.535926505440303
+        },
+        {
+          "id": "references/claims.md#PB-002 claims and decisions",
+          "score": -8.188784418023662
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Summary and question addressed",
+          "score": -8.095062741975525
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Reference algorithm and pseudocode",
+          "score": -7.723440942472789
+        }
+      ],
+      "latency_ms": 0.16620801761746407
+    },
+    "Q03": {
+      "hits": [
+        {
+          "id": "references/sources.md#PB-002 additions",
+          "score": -17.017959493115864
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Distinguish the operation's role",
+          "score": -16.406147122222762
+        },
+        {
+          "id": "references/claims.md#PB-002 claims and decisions",
+          "score": -14.729273769358999
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Summary and question addressed",
+          "score": -14.146191070460281
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Evidence and scope",
+          "score": -13.689220663773439
+        }
+      ],
+      "latency_ms": 0.2328340196982026
+    },
+    "Q04": {
+      "hits": [
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Summary and question addressed",
+          "score": -11.396570062747772
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Preserved sRGB reference",
+          "score": -9.280596023905117
+        },
+        {
+          "id": "references/sources.md#Source registry",
+          "score": -7.858056614453625
+        },
+        {
+          "id": "references/claims.md#Claim registry",
+          "score": -7.020455611335346
+        },
+        {
+          "id": "references/ecosystem.md#Open questions",
+          "score": -6.9252376941847835
+        }
+      ],
+      "latency_ms": 0.18429197371006012
+    },
+    "Q05": {
+      "hits": [
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Reference algorithm and pseudocode",
+          "score": -12.512843951526873
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Summary and question addressed",
+          "score": -6.549779102102481
+        },
+        {
+          "id": "references/claims.md#PB-002 claims and decisions",
+          "score": -5.688007376656013
+        },
+        {
+          "id": "references/sources.md#PB-002 additions",
+          "score": -5.615889691369423
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#BT.709-6 source encoding",
+          "score": -4.8815222205653725
+        }
+      ],
+      "latency_ms": 0.1598750241100788
+    },
+    "Q06": {
+      "hits": [
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Panasonic LUMIX-specific notes",
+          "score": -17.069569248100354
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Evidence and scope",
+          "score": -11.538657420659197
+        },
+        {
+          "id": "references/sources.md#PB-002 additions",
+          "score": -9.22819275247643
+        },
+        {
+          "id": "references/claims.md#PB-002 claims and decisions",
+          "score": -8.980938675931755
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Panasonic LUMIX-specific notes",
+          "score": -8.9394108698582
+        }
+      ],
+      "latency_ms": 0.17691700486466289
+    },
+    "Q07": {
+      "hits": [
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Evidence and scope",
+          "score": -8.344944223432403
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Summary and question addressed",
+          "score": -7.7927383746024805
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Edge cases, failure modes and safeguards",
+          "score": -7.768865189815727
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Reference algorithm and pseudocode",
+          "score": -6.6971909550828235
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Alternative methods and comparative evidence",
+          "score": -5.614629842121354
+        }
+      ],
+      "latency_ms": 0.17370900604873896
+    },
+    "Q08": {
+      "hits": [
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Definitions, units and prerequisites",
+          "score": -7.347429296700485
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Open questions and recommended experiments",
+          "score": -7.02710223399255
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Evidence and scope",
+          "score": -5.4362075714591676
+        },
+        {
+          "id": "chapters/02-light-color-science/MPKB-02-005.md#Evidence and scope",
+          "score": -5.127960208348245
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Summary and question addressed",
+          "score": -4.951633197805701
+        }
+      ],
+      "latency_ms": 0.1962080132216215
+    },
+    "Q09": {
+      "hits": [
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Summary and question addressed",
+          "score": -11.905454372957909
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Evidence and scope",
+          "score": -7.8121384078112195
+        },
+        {
+          "id": "references/claims.md#PB-005 claims and decisions",
+          "score": -7.36225561352219
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Selected coded still-image and video representations",
+          "score": -7.154061128523117
+        },
+        {
+          "id": "INDEX.md#Knowledge index",
+          "score": -6.0143954781277005
+        }
+      ],
+      "latency_ms": 0.1644589938223362
+    },
+    "Q10": {
+      "hits": [
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Summary and question addressed",
+          "score": -12.321396783907346
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Selected coded still-image and video representations",
+          "score": -10.668093743713497
+        },
+        {
+          "id": "references/claims.md#PB-005 claims and decisions",
+          "score": -9.481182609117107
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Definitions, units and prerequisites",
+          "score": -9.09871765680761
+        },
+        {
+          "id": "references/sources.md#PB-005 additions",
+          "score": -7.073679542806654
+        }
+      ],
+      "latency_ms": 0.16183301340788603
+    },
+    "Q11": {
+      "hits": [
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Evidence and scope",
+          "score": -9.770506117508203
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Edge cases, failure modes and safeguards",
+          "score": -8.980423819406216
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Alternative methods and comparative evidence",
+          "score": -8.089756257991068
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Definitions, units and prerequisites",
+          "score": -8.05499820211162
+        },
+        {
+          "id": "chapters/11-file-formats/MPKB-11-001.md#Summary and question addressed",
+          "score": -7.3405295477230466
+        }
+      ],
+      "latency_ms": 0.17716595903038979
+    },
+    "Q12": {
+      "hits": [
+        {
+          "id": "references/ecosystem.md#Summary",
+          "score": -21.713784831046848
+        },
+        {
+          "id": "references/ecosystem.md#Suggested adoption order",
+          "score": -12.236315548772868
+        },
+        {
+          "id": "references/ecosystem.md#Knowledge retrieval and document handling",
+          "score": -10.73362192548323
+        },
+        {
+          "id": "references/ecosystem.md#Open questions",
+          "score": -10.122275765129187
+        },
+        {
+          "id": "INDEX.md#Knowledge index",
+          "score": -8.305502466740538
+        }
+      ],
+      "latency_ms": 0.18787500448524952
+    }
+  }
+}

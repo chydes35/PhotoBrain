@@ -5,6 +5,11 @@
 - Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
 - Limit the work to local tools and tracked knowledge files; no packages, models, datasets, private data or app behavior changes.
 
+## 2026-10-21 — PB-006 keyword baseline
+
+- Add a pinned-commit retrieval runner, 12 hand-labeled queries and a SQLite FTS5 BM25 baseline over 52 Markdown heading chunks.
+- After independent review broadened answer-bearing relevance labels and clarified query scope, record Recall@5 0.826, MRR@5 0.628 and expected claim-ID coverage 13/22. The embedding comparison remains incomplete because the available local model endpoint does not provide embeddings; no model or package was downloaded.
+
 ## 2026-10-21 — Post-merge cleanup
 
 - Add `MPKB-11-001` (0.2.1) to the index and search hint.
