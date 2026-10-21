@@ -9,7 +9,7 @@
 | Existing separate Editor stabilization checkout | `<editor-stabilization-checkout>/` |
 | M0 audit kit, original sample folder, copied fixtures and evidence | `<m0-workspace>/` |
 
-All four locations are sibling directories under one developer directory on the same external SSD volume. PB-009 (2026-10-21) replaced their machine-local absolute paths with these placeholders in this public record; the meaning and layout are unchanged. The JSON snapshots linked below still record the original paths.
+All four locations are sibling directories under one developer directory on the same external SSD volume. PB-009 (2026-10-21) replaced their machine-local absolute paths with these placeholders in this public record; the meaning and layout are unchanged. PB-009 applied the same placeholders to `workspace-migration.json` (`editor_canonical`, `data_workspace`); no script or test reads those fields. The original paths remain in Git history; removing them would need a history rewrite and force-push, which is the owner's decision.
 
 The M0 sidecar workspace contains `Perception_Editor_Milestone_0/`, `PhotoTestFilesLumix/`, `m0-private/` and `m0-evidence/`. It is outside both repositories. Its new parent uses mode 700. Existing directory/file permissions are preserved. No private contents were opened for this migration.
 
