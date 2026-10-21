@@ -5,6 +5,7 @@ Status records describe work actually present, not chapter completion. The [blue
 | Topic ID | Question | Status | Record |
 | --- | --- | --- | --- |
 | MPKB-02-005 | How do normalized sRGB and Rec.709 source transfers differ? | 0.2.0 research-draft; two bounded slices | [Transfer functions](chapters/02-light-color-science/MPKB-02-005.md) |
+| MPKB-11-001 | What can file structure and metadata establish about an image input's representation? | 0.2.1 research-draft; two bounded slices | [Input representations](chapters/11-file-formats/MPKB-11-001.md) |
 
 ## Planned coverage
 
@@ -20,4 +21,4 @@ Chapter 17 is represented by the [Perception Editor integration index](integrati
 4. For app changes, follow the integration index to a pinned Editor revision and its own instructions.
 5. Missing topics are research assignments, not permission to invent facts.
 
-Search with `rg 'MPKB-02-005|sRGB' chapters references tasks`; do not crawl private compatibility paths.
+Search with `rg 'MPKB-02-005|MPKB-11-001|sRGB|DNG' chapters references tasks`; do not crawl private compatibility paths.
