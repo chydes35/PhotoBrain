@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-21 — PB-006 assigned
+
+- Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
+- Limit the work to local tools and tracked knowledge files; no packages, models, datasets, private data or app behavior changes.
+
 ## 2026-10-21 — Post-merge cleanup
 
 - Add `MPKB-11-001` (0.2.1) to the index and search hint.
