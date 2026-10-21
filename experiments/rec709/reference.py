@@ -3,14 +3,19 @@
 OETF: ITU-R BT.709-6 (06/2015), section 1, item 1.2. Inversion on the
 reachable range and rejection of the rounded-knee gap are PhotoBrain policy.
 
-Input contract (PB-009): a value must be a Python ``int`` or ``float``
-(float subclasses included); ``bool`` and other types such as ``Decimal`` or
-``str`` raise ``TypeError``. A numeric value that is not finite or lies
-outside [0, 1] raises ``ValueError``, as does a signal in the knee gap.
-``-0.0`` is accepted and treated as ``0.0``. Values are never clipped.
+Input contract (PB-009): a value must be a ``numbers.Real`` other than
+``bool`` (``int``, ``float``, ``fractions.Fraction``, and types registered as
+Real such as NumPy floating scalars). It is converted once with ``float()``,
+so a float subclass or other Real type is evaluated at its ``__float__``
+value. ``bool``, ``Decimal`` (not registered as Real), ``str``, ``complex``
+and other types raise ``TypeError``. A value that is not finite after
+conversion, overflows float, or lies outside [0, 1] raises ``ValueError``, as
+does a signal in the knee gap. ``-0.0`` is treated as ``0.0``. Values are
+never clipped.
 """
 
 import math
+import numbers
 
 
 _UPPER_KNEE_SIGNAL = 1.099 * 0.018 ** 0.45 - 0.099
@@ -18,8 +23,8 @@ _UPPER_KNEE_SIGNAL = 1.099 * 0.018 ** 0.45 - 0.099
 
 def _check_normalized(value) -> float:
     """Return ``value`` as a nonnegative-zero float, or raise."""
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise TypeError('reference input must be an int or float, not '
+    if isinstance(value, bool) or not isinstance(value, numbers.Real):
+        raise TypeError('reference input must be a real number, not '
                         + type(value).__name__)
     try:
         value = float(value)

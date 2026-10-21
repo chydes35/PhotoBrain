@@ -3,20 +3,25 @@
 Equations: SRC-PB001-01 (ICC sRGB registry), SRC-PB001-02 (W3C CSS
 Color 4, 2026-10-20, section 10.2). Independently written, not copied code.
 
-Input contract (PB-009): a component must be a Python ``int`` or ``float``
-(float subclasses included); ``bool`` and other types such as ``Decimal`` or
-``str`` raise ``TypeError``. A numeric value that is not finite or lies
-outside [0, 1] raises ``ValueError``. ``-0.0`` is accepted and treated as
-``0.0``, so no function returns negative zero. Values are never clipped.
+Input contract (PB-009): a component must be a ``numbers.Real`` other than
+``bool`` (``int``, ``float``, ``fractions.Fraction``, and types registered as
+Real such as NumPy floating scalars). It is converted once with ``float()``,
+so the result is computed from that binary64 value; a float subclass or other
+Real type is evaluated at its ``__float__`` value. ``bool``, ``Decimal`` (not
+registered as Real), ``str``, ``complex`` and other types raise ``TypeError``.
+A value that is not finite after conversion, overflows float, or lies outside
+[0, 1] raises ``ValueError``. ``-0.0`` is treated as ``0.0``, so no function
+returns negative zero. Values are never clipped.
 """
 
 import math
+import numbers
 
 
 def _check_component(value) -> float:
     """Return ``value`` as a nonnegative-zero float, or raise."""
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise TypeError('component must be an int or float, not '
+    if isinstance(value, bool) or not isinstance(value, numbers.Real):
+        raise TypeError('component must be a real number, not '
                         + type(value).__name__)
     try:
         value = float(value)
