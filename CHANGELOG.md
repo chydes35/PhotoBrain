@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-21 — PB-005 research draft
+
+- Extended `MPKB-11-001` with source-backed JFIF, PNG and H.264 coding examples; kept file/container layers, source-image fidelity and camera processing history distinct.
+- Registered four sources and eight claims. Two independent reviewers checked cited clauses and corrections. `git diff --check` passed; no code, samples, dependencies or app changes were added.
+- H.264 technical claims are pinned to V15 (08/2024); ITU lists V16 (06/2026) as current, but that edition's technical text was not reviewed. The full V15 PDF exceeded the browser retrieval limit, so cited clauses were checked using official indexed excerpts. Topic remains `research-draft`.
+
 ## 2026-10-21 — PB-005 assigned
 
 - Assign JPEG, PNG and AVC/H.264 representation research to `research/PB-005-codex` from base `acbdf2c`.
