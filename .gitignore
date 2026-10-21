@@ -1,0 +1,32 @@
+# Only deliberate knowledge-project roots may be tracked.
+/*
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/INDEX.md
+!/CHANGELOG.md
+!/DECISIONS.md
+!/CONTRIBUTING.md
+!/blueprints/
+!/chapters/
+!/references/
+!/templates/
+!/integrations/
+!/tasks/
+!/docs/
+!/experiments/
+!/tests/
+
+# Private data, local environments, caches and nested worktrees.
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.worktrees/
+*.private.*
+*.RW2
+*.rw2
+*.DNG
+*.dng
+*.pmedit
+*.log

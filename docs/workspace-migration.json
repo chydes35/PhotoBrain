@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-21",
+  "method": "same-volume directory rename with original-path compatibility symlinks",
+  "editor_canonical": "/Volumes/ExSSD1/Developer/perception-media-editor-m0",
+  "data_workspace": "/Volumes/ExSSD1/Developer/PerceptionEditor-M0-Workspace",
+  "editor_before_after_match": true,
+  "snapshot": {
+    "head": "593549a4e0461ad548b7f0588c068fb509fda6d4",
+    "branch": "codex/mpkb-v2-m0-baseline",
+    "status": "",
+    "upstream_delta": "0\t0",
+    "tracked_file_count": 205,
+    "tracked_content_sha256": "7734058077a28c9caef86e9f0dca5d272b93d31118b855f813be9a49694247e4",
+    "git_config_sha256": "51703b72d73fa585f78c8bca45c1daf5a47a8e903cfb177572476f1ecbfea9d9"
+  },
+  "compatibility_aliases": [
+    "perception-media-editor-m0",
+    "Perception_Editor_Milestone_0",
+    "PhotoTestFilesLumix",
+    "m0-evidence",
+    "m0-private"
+  ],
+  "media_or_private_contents_opened": false,
+  "m0_thread_status_before_move": "idle; latest turn completed"
+}
