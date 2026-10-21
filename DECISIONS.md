@@ -17,3 +17,9 @@ Contributors own modules in separate branches/worktrees. One integrator handles 
 ## PB-ADR-004 — Bounded initial research slice
 
 MPKB-02-005 starts with normalized sRGB components and a scalar Python oracle. Reject nonfinite/out-of-range input instead of silently clipping or inventing HDR behavior. Rec.709, PQ, HLG, log encodings and negative/extended domains remain explicit follow-ups. The parent topic stays research-draft. No claim is made about the Editor's current transfer implementation or camera output.
+
+## PB-ADR-005 — Blueprint authorship and publication
+
+Date: 2026-10-21. Status: adopted; stated in chat by the repository owner.
+
+Collin (GitHub `chydes35`) authored MPKB-BLUEPRINT-2.0 and its V1.0 source (`Master_Photography_Knowledge_Base.md`, as named in the blueprint) with AI assistance and authorizes public publication of the blueprint in this repository. This replaces the earlier "authorship not established / no public redistribution" status. It grants no reuse or redistribution license to third parties and does not select a project-wide license; that remains an owner decision. The preserved blueprint and its provenance hash are unchanged. Alternative: make the repository private or remove the blueprint; rejected because the owner authored it and authorizes publication.
