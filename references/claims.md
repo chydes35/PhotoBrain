@@ -61,3 +61,12 @@ PB-009 corrections (2026-10-21):
 
 - `CLM-PB005-02` previously tied the APP0 marker to three-channel JFIF only. ITU-T T.871 §6.1 (printed p. 2) and §6.3 (p. 3) require the JFIF APP0 marker segment immediately after SOI in every JFIF file, which the chapter text already said.
 - `CLM-PB005-06` previously cited Annex E.2.1–E.2.2. E.2.2 is HRD parameters semantics (V15 printed p. 446) and does not support the claim; the support is E.2.1 alone. E.2.1 begins on printed p. 431; the range/colour-description semantics and their inferred defaults run from p. 432 (`video_full_range_flag`, `colour_primaries`) to p. 436 (`matrix_coefficients`), checked against the official V15 (08/2024) PDF.
+
+## PB-010 claims and decisions
+
+| ID | Claim / decision | Class and evidence grade | Support | Limits |
+| --- | --- | --- | --- | --- |
+| CLM-PB010-01 | ISO/IEC 23008-12:2025 describes an image file format for a single image, image collections and image sequences, built on ISO/IEC 14496-12, with metadata structures/associations and brands for HEVC, AVC, JPEG, VVC and EVC | [V]/B | SRC-PB010-01, official abstract | Abstract-level evidence only; not a complete syntax or conformance claim. The abstract excludes storage of those video sequences, which ISO/IEC 14496-15 covers. |
+| CLM-PB010-02 | Apple's AVFoundation file-type API describes `heif` as images compressed with any codec, `heic` as HEVC-compressed images and `avci` as H.264-compressed images | [V]/B | SRC-PB010-02, API type descriptions | Describes Apple's API identifiers and extensions; not proof that any file is valid or contains the named coding. |
+| CLM-PB010-03 | Apple's 2017 HEIF overview describes image items and sequence tracks, image roles, associated properties, tiles, metadata and depth as an auxiliary image in its implementation walkthrough | [V]/B, vendor-scoped | SRC-PB010-03, cited time ranges | Dated vendor presentation, not a current normative clause or a statement that every HEIF contains those features. |
+| CLM-PB010-04 | ISO lists Amendment 2 (2026), “Low-overhead image file format,” as published; its public TOC names Annex O for the format and Annex P for MIME registration | [V]/B for status/title/TOC; [U] for technical meaning | SRC-PB010-01 ISO amendment list; SRC-PB010-04 Annex O/P TOC | Full Amd2 text was not reviewed; do not infer how it changes HEIF syntax or profile behavior. |

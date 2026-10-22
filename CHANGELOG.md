@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-21 — PB-010 HEIF/HEIC research draft
+
+- Extend the image-input representation topic with bounded ISO scope claims and Apple API/vendor evidence for HEIF/HEIC resource structures.
+- Record the ISO 2026 amendment as a known coverage gap; no syntax or conformance claims are made from its title/table of contents.
+- Integrated source/claim mappings and the topic index in the local PB-008/PB-009/PB-010 candidate. All 32 repository tests and `git diff --check` pass; a separate review found no confirmed integration issues. No parser, sample files, local media, or standard text added.
+
 ## 2026-10-21 — PB-008 H.264 V16 author review
 
 - Added ITU's V16 summary evidence for its new SEI interfaces, and full normative evidence confirming the sample-array, bit-depth and VUI defaults stated in the chapter.
@@ -22,7 +28,7 @@
 - PB-006 is merged via PR #9 at `a0034d4`; no adoption decision follows from the benchmark.
 ## 2026-10-21 — PB-009 post-merge review fixes
 
-- Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`); final re-review pending.
+- Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`) plus a separate final review at `b1e32a4`; the specific Skeptic re-review after the fixes was not obtained.
 - sRGB oracle and tests: six literals corrected to correctly rounded Decimal values (e.g. `decode(0.5)` = `0.21404114048223244`) and re-derived in a test; vector checks allow the measured per-function maximum error (sRGB 5 ulp encode / 7 ulp decode, Rec.709 3 / 5) plus a Decimal grid check; explicit test of the `-2.85e-8` encode step at `0.0031308`; `encode_srgb(1.0)` now exactly `1.0`. Both reference modules raise `TypeError` for `bool`/`Decimal`/other types and `ValueError` for bad numbers, and map `-0.0` to `0.0`. Rec.709 literals use the same exact-binary-input convention (two corrected by 1 ulp); inputs may be any `numbers.Real` except `bool`. 32 tests pass on Python 3.14.7, 3.11.16 and 3.9.6.
 - Registries: `CLM-PB001-01`/`02` relabelled [I] and graded D (secondary summaries; IEC text not obtained); `CLM-PB005-02` APP0 applies to all JFIF; `CLM-PB005-06` cites Annex E.2.1 only. `MPKB-02-005` 0.2.1 and `MPKB-11-001` 0.2.2.
 - Records: dated notes in PB-001 to PB-005 for published branches/PRs and unretained review output; SRC-PB003-01 access note re-tested; absolute local paths replaced with placeholders in four public files (Git history unchanged). No CI or GitHub settings changed.
