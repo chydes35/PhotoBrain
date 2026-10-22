@@ -75,7 +75,7 @@ PB-009 corrections (2026-10-21):
 | ID | Claim / decision | Class and evidence grade | Support | Limits |
 | --- | --- | --- | --- | --- |
 | CLM-PB007-01 | DC-S5 RAW pictures use the RW2 extension, are recorded at [L] 3:2 (6000×4000), and High Resolution RAW is 12000×8000 | [V]/A | SRC-PB007-01 pp. 87, 221–222, 479; SRC-PB007-02 | Manual edition DVQP2213ZD |
-| CLM-PB007-02 | Panasonic does not state still-RAW bit depth or compression for the original S5; it states 14-bit (12-bit in burst) for the S5II | [U] S5; [V]/A S5II | SRC-PB007-01; SRC-PB007-04 | Do not apply the S5II statement to the S5 |
+| CLM-PB007-02 | Panasonic does not state still-RAW bit depth or compression for the original S5; it states 14-bit (12-bit in burst) for the S5II | [U] S5; [V]/A S5II | SRC-PB007-01; SRC-PB007-02; SRC-PB007-04 | S5 part is a negative search of one manual edition (DVQP2213ZD) and the spec page, so [U]. Do not apply the S5II statement to the S5 |
 | CLM-PB007-03 | Sample RW2 headers use identifier 0x0055 where TIFF 6.0 requires 42 | [V]/A TIFF; [I]/C owner-reported samples; [I]/C non-conformance | SRC-PB007-05 §2 p. 13; SRC-PB007-09 | Three samples |
 | CLM-PB007-04 | ExifTool identifies RW2 by identifier 0x55, IFD0 offset ≥ 0x18 and a 16-byte signature at offset 8 | [I]/C | SRC-PB007-06 | Tool rule, not a vendor definition |
 | CLM-PB007-05 | Samples have one IFD0 (67 entries, offset 24), no IFD1 | [I]/C owner-reported | SRC-PB007-09 | Three samples |
@@ -97,7 +97,7 @@ PB-009 corrections (2026-10-21):
 | CLM-PB007-21 | ExifTool 13.55 agrees with the Python reader on all compared RW2 fields of three samples; 13.55→13.59 source changes do not touch those fields | [I]/C owner-reported; [V]/C source comparison | SRC-PB007-10; SRC-PB007-09; SRC-PB007-06 | Three samples |
 | CLM-PB007-22 | Decoded pixels show RGGB at the crop origin in three samples | [I]/C owner-reported; [I]/C for all S5 files | SRC-PB007-11 | Partly clipped scenes; preview and WB are camera-derived, so not independent |
 | CLM-PB007-23 | A numpy transcription of LibRaw's RawFormat 6 14-bit decoder matches LibRaw 0.22.1 bit-for-bit | [I]/C owner-reported (transcription check); [I]/C layout | SRC-PB007-11; SRC-PB007-07 | Same reverse-engineered model |
-| CLM-PB007-24 | About 7.5–11.7% of visible pixels (100% − step-1 share) are coded at step 2/4/16 DN; error magnitude unknown | [I]/C owner-reported; [I]/C; [U]; [U] noise comparison | SRC-PB007-11 | Start-value counting unrecorded; no lossless reference |
+| CLM-PB007-24 | About 7.5–11.7% of pixels (100% − step-1 share; denominator unrecorded) are coded at step 2/4/16 DN; error magnitude unknown | [I]/C owner-reported; [I]/C; [U]; [U] noise comparison | SRC-PB007-11 | Start-value counting unrecorded; no lossless reference |
 | CLM-PB007-25 | Full-image histograms show no code gaps from 8192 DN upward (8147 values), so they cannot reveal the quantization | [I]/C owner-reported; [U] upper end (16338 DN not derivable from LibRaw) | SRC-PB007-11; SRC-PB007-07 | Relative coding shifts the grid |
 | CLM-PB007-26 | MakerNote 0x008a ShadingCompensation is Off in all samples; ON/OFF effect untested | [I]/C owner-reported; [I]/D; [U] | SRC-PB007-10; SRC-PB007-06 | Needs new shot pair |
 | CLM-PB007-27 | Burst-flagged samples are 14-bit RawFormat 6 | [I]/C owner-reported; [I]/D | SRC-PB007-10; SRC-PB007-09 | Not a general S5 burst statement |
