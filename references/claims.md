@@ -104,3 +104,14 @@ PB-009 corrections (2026-10-21):
 | CLM-PB007-28 | LibRaw 0.22.1 visible area 6024×4016 differs from Panasonic crop 6000×4000 at (12, 8) | [I]/C owner-reported; [D] | SRC-PB007-11 | Consumers must state which rectangle |
 
 Precedent note (PB-007, 2026-10-22): `CLM-PB002-05` grades a Panasonic manual C and `CLM-PB003-04`/`05` grade Apple vendor documents B. PB-007 grades vendor manuals A under blueprint §1.2; those older rows are another task's and were not changed. The integrator may want one rule.
+
+## PB-010 claims and decisions
+
+No PB-010 claim is graded A or B: the available sources do not provide exact normative clauses/pages for the HEIF and ISOBMFF syntax claims. The ISO standards' full texts were not available, so those technical details remain unknown.
+
+| ID | Claim / decision | Class and evidence grade | Support | Limits |
+| --- | --- | --- | --- | --- |
+| CLM-PB010-01 | ISO's catalog identifies ISO/IEC 23008-12:2025 Edition 3 and ISO/IEC 14496-12:2026 Edition 8; exact normative HEIF/ISOBMFF syntax remains unknown | [V]/D for catalog metadata; [U]/D for normative syntax | SRC-PB010-01 and SRC-PB010-05, official catalog records/abstracts only | Full normative texts were not available to consult; no clauses or syntax inferred from memory |
+| CLM-PB010-02 | Apple's AVFoundation API describes `heif`, `heic`, and `avci` as compressed-image file types with the codec associations stated in those API entries | [V]/C | SRC-PB010-02, current Apple API descriptions for each named type | Vendor API descriptions, not a universal HEIF rule, codec specification, or validation of a particular file |
+| CLM-PB010-03 | Apple's WWDC17 presentation illustrates HEIF structures and a depth example at the cited timestamps as Apple's 2017 implementation overview | [V]/C | SRC-PB010-03, WWDC17 session 513, 06:32–20:48 and 26:29–27:19 | Dated vendor walkthrough; it does not establish current normative requirements or contents of an arbitrary file |
+| CLM-PB010-04 | ISO's public record lists Amendment 2:2026 as “Low-overhead image file format”; the amendment's technical meaning is unknown here | [V]/D for catalog title; [U]/D for technical meaning | SRC-PB010-04, official ISO amendment record/public table of contents | Full amendment text not consulted; no syntax or requirements inferred |

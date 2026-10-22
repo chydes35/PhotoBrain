@@ -5,7 +5,7 @@ Status records describe work actually present, not chapter completion. The [blue
 | Topic ID | Question | Status | Record |
 | --- | --- | --- | --- |
 | MPKB-02-005 | How do normalized sRGB and Rec.709 source transfers differ? | 0.2.1 research-draft; two bounded slices | [Transfer functions](chapters/02-light-color-science/MPKB-02-005.md) |
-| MPKB-11-001 | What can file structure and metadata establish about an image input's representation? | 0.2.3 research-draft; two bounded slices | [Input representations](chapters/11-file-formats/MPKB-11-001.md) |
+| MPKB-11-001 | What can file structure and metadata establish about an image input's representation? | 0.3.0 research-draft; four bounded slices | [Input representations](chapters/11-file-formats/MPKB-11-001.md) |
 | MPKB-11-002 | What does a Panasonic RW2 file contain, and what do original DC-S5 files record? | 0.3.1 research-draft; sample results owner-reported (3 private files) | [Panasonic RW2](chapters/11-file-formats/MPKB-11-002.md) |
 
 ## Planned coverage

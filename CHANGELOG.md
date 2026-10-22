@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-22 — PB-010 HEIF/HEIC research draft (MPKB-11-001 0.3.0)
+
+- Add a bounded HEIF/HEIC evidence slice to MPKB-11-001 and register `SRC-PB010-01`–`05` plus `CLM-PB010-01`–`04`.
+- Grade Apple API and WWDC17 statements [V]/C for their documented vendor scope. Mark HEIF/ISOBMFF normative details and the 2026 amendment's technical meaning [U]/D because their full normative text was not consulted; no HEIF box or codec syntax is asserted from memory.
+- Update the topic and index from 0.2.3 to 0.3.0. The topic remains research-draft and has not been independently reviewed at a specific commit.
+- Checks: `python3 -m unittest discover -s tests -v` — 32 tests, `OK`; `git diff --check` clean; every source and claim ID cited by MPKB-11-001 resolves exactly once. No code or media files added. PR link: pending publication.
+
 ## 2026-10-22 — PB-007 Skeptic review fixes (MPKB-11-002 0.3.1)
 
 - Skeptic (`ee0c3372…`) reviewed PR #10 head `c7e6878`: NEEDS FIXES, nothing blocking. All 17 findings addressed on `research/PB-007-grokbot` (some as partial fixes or recorded deviations; see `tasks/PB-007.md`). Topic stays research-draft; `MPKB-11-002` 0.2.0 → 0.3.0.
