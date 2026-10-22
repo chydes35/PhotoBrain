@@ -5,6 +5,8 @@
 - Added ITU's V16 summary evidence for its new SEI interfaces, and full normative evidence confirming the sample-array, bit-depth and VUI defaults stated in the chapter.
 - Confirmed V15 and V16 agree on the scoped sample organization and VUI facts; kept camera-pipeline and stream-specific inferences separate.
 - Integration review corrected the separation between eleven new SEI messages and separate VSEI extensions, and changed the full-text source link to the direct official PDF. A separate verification agent reproduced and checked both fixes; 19 repository reference tests and `git diff --check` passed. No code, sample files, local media or standard text were added.
+- `MPKB-11-001` 0.2.1 → 0.2.2: front matter lists `SRC-PB008-01`/`SRC-PB008-02` and the PB-008 contribution; INDEX updated. PR #12 (PB-009) also sets this module to 0.2.2 from the same base, so whichever of PR #11/#12 merges second must take 0.2.3 and combine both contributions on the `contribution:` line.
+- PR #11 review fixes (Grok Bot, `research/PB-008-fixes-grokbot`, at the maintainer's request; independent re-review pending): `CLM-PB005-06` cites Annex E.2.1 only, worded as in PR #12; `CLM-PB005-08` keeps its PB-005 wording and points to `CLM-PB008-01`–`03`, with its [U] narrowed to V16 clauses outside that review; `CLM-PB008-01` regraded B → C (ITU's own summary is neither normative text nor reviewed research), with its [I] limit moved to the Limits column; `CLM-PB008-02` adds §7.3.2.1.1 (p. 46); `CLM-PB008-03` and `SRC-PB008-02` extend E.2.1 to p. 438.
 
 ## 2026-10-21 — PB-008 assigned
 
