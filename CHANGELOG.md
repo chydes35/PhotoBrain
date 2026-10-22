@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-22 — PB-011 GitHub Actions CI
+
+- Add `.github/workflows/tests.yml`: on `pull_request` and `push` to `main`, run `python -m unittest discover -s tests -v` for Python 3.9, 3.11 and 3.14 (`fail-fast: false`, `permissions: contents: read`). Job names `tests (3.9)`, `tests (3.11)`, `tests (3.14)` are stable for use as required checks.
+- Runner pinned to `ubuntu-24.04`: `ubuntu-latest` is migrating to Ubuntu 26.04 between 2026-10-19 and 2026-11-19 ([actions/runner-images#14748](https://github.com/actions/runner-images/issues/14748)), and Python 3.9.25 has no 26.04 build. Dropping 3.9 or moving the runner to 26.04 is a later decision.
+- Actions pinned to full SHAs: `actions/checkout` `3d3c42e…` (v7.0.1) with `persist-credentials: false`; `actions/setup-python` `6d4fd22…` (v7.1.0). No Dependabot added.
+- Allowlist `/.github/` in `.gitignore` as a reviewed tooling exception (CI workflows only), not a knowledge root.
+- The suite uses only the standard library, no network, no model and no private paths. Skeptic measured the ulp bounds on glibc 2.41: sRGB encode 5/5, decode 7/7, Rec.709 encode 3/3, inverse 4/5 (max/bound), so three bounds have zero margin. Not yet run on GitHub's runners.
+- Review: Skeptic reviewed `ddd371d` (NEEDS FIXES), then `0139af7` (HOLDS UP); nits applied. `.github/` allowlist narrowed to `.github/workflows/`. Making a check required in branch protection is Collin's setting; no GitHub settings changed.
+
 ## 2026-10-21 — PB-009 post-merge review fixes
 
 - Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`); final re-review pending.
