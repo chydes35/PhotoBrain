@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-22 — PB-011 GitHub Actions CI
+
+- Add `.github/workflows/tests.yml`: on `pull_request` and `push` to `main`, run `python -m unittest discover -s tests -v` on `ubuntu-latest` for Python 3.9, 3.11 and 3.14 (`fail-fast: false`, `permissions: contents: read`, `actions/checkout@v7`, `actions/setup-python@v7`). Job names `tests (3.9)`, `tests (3.11)`, `tests (3.14)` are stable for use as required checks.
+- Allowlist the `/.github/` root in `.gitignore` so the workflow can be tracked; this is a deliberate new root for review.
+- The suite uses only the standard library, no network, no model and no private paths. It has not yet run on GitHub's Linux runners; the ulp bounds were measured on macOS arm64 libm (see `tasks/PB-011.md`). Making a check required in branch protection is Collin's setting; no GitHub settings changed.
+
 ## 2026-10-21 — PB-009 post-merge review fixes
 
 - Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`); final re-review pending.

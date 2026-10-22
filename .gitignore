@@ -16,6 +16,7 @@
 !/docs/
 !/experiments/
 !/tests/
+!/.github/
 
 # Private data, local environments, caches and nested worktrees.
 .DS_Store
