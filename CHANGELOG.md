@@ -5,7 +5,7 @@
 - Correct availability wording: IEC lists the ISO/IEC 23008-12:2025 and ISO/IEC 14496-12:2026 base publications at CHF 0; their full technical text remains unconsulted. Keep the syntax claims [U].
 - Regrade ISO publisher-catalog metadata [V]/C, retain unsupported normative details as [U]/D, and record ISO/IEC 14496-12:2026 stage 90.92 and expected DIS replacement.
 - Add IEC Webstore source records `SRC-PB010-06` and `SRC-PB010-07`, complete the PB-010 task-record template, and state the explicit authorization for shared-file changes. Record that the task-board row landed with the content commit; no history rewrite was made.
-- Findings were checked independently. The corrected contribution remains research-draft; follow-up review of the corrected head is pending. Checks and new head commit will be recorded after rerun.
+- Findings were checked independently. At corrected content commit `0e514b6656a63fbc191d045cd38247c7602e2e20`, all 32 tests passed, `git diff --check` was clean, and all 19 cited source IDs and 27 claim IDs resolved exactly once. The corrected contribution remains research-draft; follow-up review of the corrected head is pending.
 
 ## 2026-10-22 — PB-010 HEIF/HEIC research draft (MPKB-11-001 0.3.0)
 
