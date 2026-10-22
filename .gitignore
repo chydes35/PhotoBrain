@@ -18,6 +18,8 @@
 !/experiments/
 !/tests/
 !/.github/
+/.github/*
+!/.github/workflows/
 
 # Private data, local environments, caches and nested worktrees.
 .DS_Store
