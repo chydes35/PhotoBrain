@@ -4,7 +4,7 @@
 
 - Extend the image-input representation topic with bounded ISO scope claims and Apple API/vendor evidence for HEIF/HEIC resource structures.
 - Record the ISO 2026 amendment as a known coverage gap; no syntax or conformance claims are made from its title/table of contents.
-- Integrated source/claim mappings and the topic index in the local PB-008/PB-009/PB-010 candidate. All 32 repository tests and `git diff --check` pass; a separate review found no confirmed integration issues. No parser, sample files, local media, or standard text added.
+- Integrated source/claim mappings and the topic index for PB-008/PB-009/PB-010 in draft PR #13. All 32 repository tests and `git diff --check` pass; a separate review found no confirmed integration issues. No parser, sample files, local media, or standard text added.
 
 ## 2026-10-21 — PB-008 H.264 V16 author review
 
