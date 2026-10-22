@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-22 — PB-007 Skeptic review fixes (MPKB-11-002 0.3.0)
+
+- Skeptic (`ee0c3372…`) reviewed PR #10 head `c7e6878`: NEEDS FIXES, nothing blocking. All 17 findings fixed on `research/PB-007-grokbot`; Skeptic's re-review is pending. Topic stays research-draft; `MPKB-11-002` 0.2.0 → 0.3.0.
+- Registries and index, at Collin's request: add `MPKB-11-002` to INDEX and the search hint; add `SRC-PB007-01`–`11` to `references/sources.md` and `CLM-PB007-01`–`28` to `references/claims.md` (previously only proposed in `tasks/PB-007.md`). Append-only; no other task's rows changed. Every ID the chapter cites resolves.
+- Labels: results measured on the 3 owner-provided S5 samples go from [V]/C to [I]/C, owner-reported (inputs not redistributable; scripts not retained), because CONTRIBUTING requires reproducible input, settings and results. Tag meanings and the step map are [I]. Panasonic manuals and pages are graded A (blueprint §1.2 normative tier) instead of B. The shot-noise [H] becomes [U]. `CLM-PB007-20` and the LibRaw support note get labels.
+- Corrections: LibRaw chooses 11 or 14 samples per block from bit depth, not data size. LibRaw is pinned to tag 0.22.1 (`b860248`, the version rawpy 0.27.1 bundles) with line numbers re-checked. ExifTool 13.55 and 13.59 source compared: no change to the tags read. Citations fixed (JpgFromRaw note at `PanasonicRaw.pm` line 204; Blackmagic recorders at manual p. F-28; `CLM-PB007-10` cites the counting argument). The numpy decoder is described as a transcription check. ≡ 1 (mod 16) explained by decoder arithmetic. The upper end of the 8147-value histogram range marked [U]. Step-share rounding reconciled (11.6% vs 11.7%) and the start-value counting convention marked [U].
+- Privacy: exact per-file preview byte lengths, Gamma and DistortionScale replaced with ranges. A private-data scan of the diff found no file names, serials, GPS, capture dates or hashes.
+- Checks: 32 tests OK (Python 3.14.7); `git diff --check` clean. No code, sample files or private data added.
+
 ## 2026-10-22 — PB-008 merged with current `main`
 
 - Merge `origin/main` @ `94093d9` (PR #12, PB-009, which includes PR #9, PB-006) into PR #11. PR #12 merged first, so this PR takes `MPKB-11-001` 0.2.3 (front matter and INDEX), and the `contribution:` line combines to `PB-003 + PB-005 + PB-008 + PB-009 (citation corrections)`.
