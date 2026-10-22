@@ -2,9 +2,12 @@
 
 ## 2026-10-22 — PB-011 GitHub Actions CI
 
-- Add `.github/workflows/tests.yml`: on `pull_request` and `push` to `main`, run `python -m unittest discover -s tests -v` on `ubuntu-latest` for Python 3.9, 3.11 and 3.14 (`fail-fast: false`, `permissions: contents: read`, `actions/checkout@v7`, `actions/setup-python@v7`). Job names `tests (3.9)`, `tests (3.11)`, `tests (3.14)` are stable for use as required checks.
-- Allowlist the `/.github/` root in `.gitignore` so the workflow can be tracked; this is a deliberate new root for review.
-- The suite uses only the standard library, no network, no model and no private paths. It has not yet run on GitHub's Linux runners; the ulp bounds were measured on macOS arm64 libm (see `tasks/PB-011.md`). Making a check required in branch protection is Collin's setting; no GitHub settings changed.
+- Add `.github/workflows/tests.yml`: on `pull_request` and `push` to `main`, run `python -m unittest discover -s tests -v` for Python 3.9, 3.11 and 3.14 (`fail-fast: false`, `permissions: contents: read`). Job names `tests (3.9)`, `tests (3.11)`, `tests (3.14)` are stable for use as required checks.
+- Runner pinned to `ubuntu-24.04`: `ubuntu-latest` is migrating to Ubuntu 26.04 between 2026-10-19 and 2026-11-19 ([actions/runner-images#14748](https://github.com/actions/runner-images/issues/14748)), and Python 3.9.25 has no 26.04 build. Dropping 3.9 or moving the runner to 26.04 is a later decision.
+- Actions pinned to full SHAs: `actions/checkout` `3d3c42e…` (v7.0.1) with `persist-credentials: false`; `actions/setup-python` `6d4fd22…` (v7.1.0). No Dependabot added.
+- Allowlist `/.github/` in `.gitignore` as a reviewed tooling exception (CI workflows only), not a knowledge root.
+- The suite uses only the standard library, no network, no model and no private paths. Skeptic measured the ulp bounds on glibc 2.41: sRGB encode 5/5, decode 7/7, Rec.709 encode 3/3, inverse 4/5 (max/bound), so three bounds have zero margin. Not yet run on GitHub's runners.
+- Review: Skeptic reviewed `ddd371d`, NEEDS FIXES; fixes applied, re-review pending. Making a check required in branch protection is Collin's setting; no GitHub settings changed.
 
 ## 2026-10-21 — PB-009 post-merge review fixes
 

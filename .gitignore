@@ -1,4 +1,5 @@
-# Only deliberate knowledge-project roots may be tracked.
+# Only deliberate knowledge-project roots may be tracked, plus the reviewed
+# tooling exception /.github/ (CI workflows only; PB-011).
 /*
 !/.gitignore
 !/README.md
