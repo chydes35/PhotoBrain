@@ -7,6 +7,16 @@
 - Registries: `CLM-PB001-01`/`02` relabelled [I] and graded D (secondary summaries; IEC text not obtained); `CLM-PB005-02` APP0 applies to all JFIF; `CLM-PB005-06` cites Annex E.2.1 only. `MPKB-02-005` 0.2.1 and `MPKB-11-001` 0.2.2.
 - Records: dated notes in PB-001 to PB-005 for published branches/PRs and unretained review output; SRC-PB003-01 access note re-tested; absolute local paths replaced with placeholders in four public files (Git history unchanged). No CI or GitHub settings changed.
 
+## 2026-10-21 — PB-006 assigned
+
+- Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
+- Initial scope used installed local tools and tracked knowledge files only; the user later authorized the benchmark model download to the external SSD. No datasets, private data, or app behavior changes.
+
+## 2026-10-21 — PB-006 retrieval comparison
+
+- Record the pinned-corpus SQLite FTS5 baseline and Nomic Embed Text v1.5 cosine comparison over 52 chunks and 12 queries; keyword Recall@5/MRR@5 0.826/0.628 versus embedding 0.708/0.597. Embedding expected claim-ID presence was 16/22 versus keyword's 13/22, at higher one-run latency. The Apache-2.0 model was stored on the external SSD; no model data entered Git. No application or database adoption decision follows.
+- Publish the reviewed contribution as [PR #9](https://github.com/chydes35/PhotoBrain/pull/9); awaiting integrator review.
+
 ## 2026-10-21 — Post-merge cleanup
 
 - Add `MPKB-11-001` (0.2.1) to the index and search hint.
