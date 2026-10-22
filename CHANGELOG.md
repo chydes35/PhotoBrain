@@ -5,7 +5,7 @@
 - Board: PB-008 merged as PR #11 (`cbbd0eb`, 6:45 AM CDT) and PB-011 merged as PR #14 (`9a916cd`, 6:39 AM CDT); add the PB-012 row.
 - `tasks/PB-006.md`: merged as PR #9 (`a0034d4`, 7:12 PM CDT 2026-10-21), replacing "awaiting integrator review". `tasks/PB-008.md` and `tasks/PB-011.md`: integration commits filled in; pre-merge "pending" statements marked superseded.
 - `tasks/PB-011.md`: [I] items confirmed from CI logs: PR #14's run used `ubuntu-24.04` image `20261012.334.1` with CPython 3.14.8, 3.11.17 and 3.9.25, and the bounds tests passed on the runner's glibc (version not measured). A later run on image `20261021.345.10` used 3.14.9. `main` requires `tests (3.9)`, `tests (3.11)` and `tests (3.14)`.
-- Status text only; no knowledge, registry, index, code or test changes. Independent review by Skeptic pending.
+- Status text only; no knowledge, registry, index, code or test changes. Independently reviewed by Skeptic at `1d61c8f` (holds up); nits applied in `e2c1cc9`.
 
 ## 2026-10-22 — PB-008 merged with current `main`
 
