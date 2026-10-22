@@ -11,6 +11,13 @@
 - Privacy: exact per-file preview byte lengths, Gamma and DistortionScale replaced with ranges (0.3.0); remaining per-sample values replaced with ranges (0.3.1). A private-data scan of the diff found no file names, serials, GPS, capture dates or hashes.
 - Checks (0.3.0 and again for 0.3.1): 32 tests OK (Python 3.14.7); `git diff --check` clean; every ID the chapter cites resolves. No code, sample files or private data added.
 
+## 2026-10-22 — PB-012 status-record cleanup
+
+- Board: PB-008 merged as PR #11 (`cbbd0eb`, 6:45 AM CDT) and PB-011 merged as PR #14 (`9a916cd`, 6:39 AM CDT); add the PB-012 row.
+- `tasks/PB-006.md`: merged as PR #9 (`a0034d4`, 7:12 PM CDT 2026-10-21), replacing "awaiting integrator review". `tasks/PB-008.md` and `tasks/PB-011.md`: integration commits filled in; pre-merge "pending" statements marked superseded.
+- `tasks/PB-011.md`: [I] items confirmed from CI logs: PR #14's run used `ubuntu-24.04` image `20261012.334.1` with CPython 3.14.8, 3.11.17 and 3.9.25, and the bounds tests passed on the runner's glibc (version not measured). A later run on image `20261021.345.10` used 3.14.9. `main` requires `tests (3.9)`, `tests (3.11)` and `tests (3.14)`.
+- Status text only; no knowledge, registry, index, code or test changes. Independently reviewed by Skeptic at `1d61c8f` (holds up); nits applied in `e2c1cc9`.
+
 ## 2026-10-22 — PB-008 merged with current `main`
 
 - Merge `origin/main` @ `94093d9` (PR #12, PB-009, which includes PR #9, PB-006) into PR #11. PR #12 merged first, so this PR takes `MPKB-11-001` 0.2.3 (front matter and INDEX), and the `contribution:` line combines to `PB-003 + PB-005 + PB-008 + PB-009 (citation corrections)`.
