@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-21 — PB-010 HEIF/HEIC research draft
+
+- Extend the image-input representation topic with bounded ISO scope claims and Apple API/vendor evidence for HEIF/HEIC resource structures.
+- Record the ISO 2026 amendment as a known coverage gap; no syntax or conformance claims are made from its title/table of contents.
+- Integrated source/claim mappings and the topic index for PB-008/PB-009/PB-010 in draft PR #13. All 32 repository tests and `git diff --check` pass; a separate review found no confirmed integration issues. No parser, sample files, local media, or standard text added.
+
+## 2026-10-21 — PB-008 H.264 V16 author review
+
+- Added ITU's V16 summary evidence for its new SEI interfaces, and full normative evidence confirming the sample-array, bit-depth and VUI defaults stated in the chapter.
+- Confirmed V15 and V16 agree on the scoped sample organization and VUI facts; kept camera-pipeline and stream-specific inferences separate.
+- Integration review corrected the separation between eleven new SEI messages and separate VSEI extensions, and changed the full-text source link to the direct official PDF. A separate verification agent reproduced and checked both fixes; 19 repository reference tests and `git diff --check` passed. No code, sample files, local media or standard text were added.
+
+## 2026-10-21 — PB-008 assigned
+
+- Assign review of current ITU-T H.264 V16 clauses against the existing H.264 V15-based representation claims in `MPKB-11-001` to `research/PB-008-codex` from base `6a7f30e`.
+- Scope is standard-backed technical differences and claim updates only; no local media, decoder, dataset, or application behavior changes.
+
 ## 2026-10-21 — PB-006 assigned
 
 - Assign a reproducible keyword-versus-embedding retrieval comparison on the pinned approved Markdown corpus, with a hand-checked query set and retrieval metrics.
@@ -8,7 +25,14 @@
 ## 2026-10-21 — PB-006 retrieval comparison
 
 - Record the pinned-corpus SQLite FTS5 baseline and Nomic Embed Text v1.5 cosine comparison over 52 chunks and 12 queries; keyword Recall@5/MRR@5 0.826/0.628 versus embedding 0.708/0.597. Embedding expected claim-ID presence was 16/22 versus keyword's 13/22, at higher one-run latency. The Apache-2.0 model was stored on the external SSD; no model data entered Git. No application or database adoption decision follows.
-- Publish the reviewed contribution as [PR #9](https://github.com/chydes35/PhotoBrain/pull/9); awaiting integrator review.
+- PB-006 is merged via PR #9 at `a0034d4`; no adoption decision follows from the benchmark.
+## 2026-10-21 — PB-009 post-merge review fixes
+
+- Act as integrator for the confirmed findings of the Skeptic review of `main` @ `6a7f30e`; retroactively record PR #8 (merge `6a7f30e`, head `418afa4`; its review was by the same agent identity as its author and `418afa4` was not re-reviewed) in `tasks/PB-009.md`. Separate-agent review of PB-009: Skeptic (`6a7f30e`, re-review `0d8b381`) plus a separate final review at `b1e32a4`; the specific Skeptic re-review after the fixes was not obtained.
+- sRGB oracle and tests: six literals corrected to correctly rounded Decimal values (e.g. `decode(0.5)` = `0.21404114048223244`) and re-derived in a test; vector checks allow the measured per-function maximum error (sRGB 5 ulp encode / 7 ulp decode, Rec.709 3 / 5) plus a Decimal grid check; explicit test of the `-2.85e-8` encode step at `0.0031308`; `encode_srgb(1.0)` now exactly `1.0`. Both reference modules raise `TypeError` for `bool`/`Decimal`/other types and `ValueError` for bad numbers, and map `-0.0` to `0.0`. Rec.709 literals use the same exact-binary-input convention (two corrected by 1 ulp); inputs may be any `numbers.Real` except `bool`. 32 tests pass on Python 3.14.7, 3.11.16 and 3.9.6.
+- Registries: `CLM-PB001-01`/`02` relabelled [I] and graded D (secondary summaries; IEC text not obtained); `CLM-PB005-02` APP0 applies to all JFIF; `CLM-PB005-06` cites Annex E.2.1 only. `MPKB-02-005` 0.2.1 and `MPKB-11-001` 0.2.2.
+- Records: dated notes in PB-001 to PB-005 for published branches/PRs and unretained review output; SRC-PB003-01 access note re-tested; absolute local paths replaced with placeholders in four public files (Git history unchanged). No CI or GitHub settings changed.
+- A separate independent review of the final `b1e32a4` content found no confirmed issues; the targeted sRGB endpoint regression was causally verified in an isolated SSD clone.
 
 ## 2026-10-21 — Post-merge cleanup
 
