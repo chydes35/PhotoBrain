@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-08 — PB-013 status reconciliation
+
+- Reconcile PB-007 and PB-012 board/record summaries with local PR #10/#15 merge commits (`cafc3ce`, `1bb1f0d`), including integration heads.
+- Align PB-007 review summary with the existing recorded HOLDS UP check of `de936fa` and final nit fix `2aaa740`; retain the absence of a separate final-nit re-review and all remaining research gates.
+- Update PB-003/PB-005 next steps to acknowledge PB-005/PB-008 coverage already integrated; add a current PB-009 status that preserves the unrecorded verification-runner gate. Historical review narratives are retained.
+- Documentation only; no topic, evidence grade, source/claim registry, code or private input changed. Review and checks are recorded in `tasks/PB-013.md`.
+
 ## 2026-10-22 — PB-007 Skeptic review fixes (MPKB-11-002 0.3.1)
 
 - Skeptic (`ee0c3372…`) reviewed PR #10 head `c7e6878`: NEEDS FIXES, nothing blocking. All 17 findings addressed on `research/PB-007-grokbot` (some as partial fixes or recorded deviations; see `tasks/PB-007.md`). Topic stays research-draft; `MPKB-11-002` 0.2.0 → 0.3.0.
